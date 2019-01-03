@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "exports.handler = function(event, context, callback) {\n   \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "triggers": [
           {
             "resourceName": "apigusEast1TestAPIMyLambdapost",
@@ -66,10 +66,10 @@
           "resourceId": "98nqbj",
           "restMethod": "POST",
           "proxyIntegration": false,
-          "enableCORS": true,
+          "enableCORS": false,
           "stageMode": 1,
           "stageName": "test",
-          "stageDeploymentId": "1kay6f"
+          "stageDeploymentId": "byyq4x"
         },
         "globallyEditable": false
       }
@@ -96,7 +96,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1546492607914
+    "lastSave": 1546495680378
   },
   "VCS_STATE": {
     "provider": "GitHub",
