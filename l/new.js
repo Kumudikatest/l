@@ -1,3 +1,4 @@
-<script>
-    console.log("Test");
-</script>
+exports.handler = function(event, context, callback) {
+    
+    callback(null, {"message": "Successfully executed"});
+}
