@@ -1,113 +1,51 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "ae771d6d-ab13-4fee-8cbf-cadf5fe0bb81": {
-        "id": "ae771d6d-ab13-4fee-8cbf-cadf5fe0bb81",
+      "71f9cc37-342e-418c-9ecc-729e7397233e": {
+        "id": "71f9cc37-342e-418c-9ecc-729e7397233e",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "9033302b-487e-4d5f-a411-d61fe3902eaa"
+          "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "9033302b-487e-4d5f-a411-d61fe3902eaa": {
-        "id": "9033302b-487e-4d5f-a411-d61fe3902eaa",
-        "parent": "ae771d6d-ab13-4fee-8cbf-cadf5fe0bb81",
+      "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad": {
+        "id": "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad",
+        "parent": "71f9cc37-342e-418c-9ecc-729e7397233e",
         "name": "lambda.js",
         "type": "LAMBDA_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst ddb = new AWS.DynamoDB.DocumentClient();\n\nexports.handler = function (event, context, callback) {\n\n    event.Records.forEach((record) => {\n        console.log(record.eventID);\n        console.log(record.eventName);\n        console.log('DynamoDB Record: %j', record.dynamodb);\n    });\n    return `Successfully processed ${event.Records.length} records.`;\n}",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
           "timeout": 60,
           "memory": 128,
-          "layers": []
-        },
-        "testCases": {
-          "54a083bd-c833-4743-813c-7d9aebfc02ac": {
-            "id": "54a083bd-c833-4743-813c-7d9aebfc02ac",
-            "name": "Unnamed event",
-            "functionId": "9033302b-487e-4d5f-a411-d61fe3902eaa",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
+          "layers": [
+            "arn:aws:lambda:us-east-2:123456789012:layer:my-layer:3",
+            "arn:aws:lambda:us-east-2:210987654321:layer:their-layer:2",
+            "arn:aws:lambda:us-east-2:123456789012:layer:my-layer:2",
+            "arn:aws:lambda:us-east-2:210987654321:layer:their-layer:3",
+            "arn:aws:lambda:us-east-2:123456789012:layer:my-layer:1"
+          ]
         }
       }
     },
     "deletedFiles": [],
-    "rootNode": "ae771d6d-ab13-4fee-8cbf-cadf5fe0bb81",
+    "rootNode": "71f9cc37-342e-418c-9ecc-729e7397233e",
     "openFiles": [
-      "9033302b-487e-4d5f-a411-d61fe3902eaa"
+      "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad"
     ],
-    "currentFileId": "9033302b-487e-4d5f-a411-d61fe3902eaa",
-    "resources": {
-      "ddbNew": {
-        "name": "ddbNew",
-        "type": "DynamoDB",
-        "config": {
-          "mode": 0,
-          "table": {
-            "arn": "",
-            "name": "New",
-            "partitionKey": "ID",
-            "partitionKeyType": "N",
-            "hasSortKey": false,
-            "sortKey": "",
-            "sortKeyType": "S",
-            "mode": 0
-          },
-          "parameters": {
-            "mode": 0,
-            "operation": "put",
-            "table": {
-              "arn": "",
-              "name": "New",
-              "partitionKey": "ID",
-              "partitionKeyType": "N",
-              "hasSortKey": false,
-              "sortKey": "",
-              "sortKeyType": "S",
-              "mode": 0
-            },
-            "parameters": {
-              "Key": {},
-              "Item": {
-                "ID": 4
-              },
-              "ExpressionAttributeValues": {}
-            },
-            "triggerParams": {},
-            "validator": {
-              "validatableFields": {},
-              "validity": true
-            },
-            "valid": true,
-            "triggerConfig": {
-              "StartingPosition": "TRIM_HORIZON",
-              "BatchSize": 100
-            },
-            "TableName": "New"
-          },
-          "triggerParams": {
-            "StartingPosition": "LATEST",
-            "BatchSize": 100
-          },
-          "validator": {
-            "validatableFields": {},
-            "validity": true
-          },
-          "valid": true
-        },
-        "globallyEditable": false
-      }
-    },
+    "currentFileId": "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad",
+    "resources": {},
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -123,14 +61,7 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {
-        "aws-sdk": {
-          "name": "aws-sdk",
-          "version": "2.176.0",
-          "dev": true,
-          "notRemovable": false
-        }
-      }
+      "dependencies": {}
     }
   },
   "PROJECT_META": {
@@ -140,7 +71,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1550644709011
+    "lastSave": 1550662219843
   },
   "VCS_STATE": {
     "provider": "GitHub",
