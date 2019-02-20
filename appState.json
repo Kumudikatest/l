@@ -30,11 +30,7 @@
           "timeout": 60,
           "memory": 128,
           "layers": [
-            "arn:aws:lambda:us-east-1:318300609668:layer:my-layer:3",
-            "arn:aws:lambda:us-east-1:318300609668:layer:their-layer:2",
-            "arn:aws:lambda:us-east-1:318300609668:layer:my-layer:2",
-            "arn:aws:lambda:us-east-1:318300609668:layer:their-layer:3",
-            "arn:aws:lambda:us-east-1:318300609668:layer:my-layer:1"
+            "arn:aws:lambda:us-east-1:318300609668:layer:ktest-layer:1"
           ]
         }
       }
@@ -71,7 +67,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1550662484934
+    "lastSave": 1550664851736
   },
   "VCS_STATE": {
     "provider": "GitHub",
