@@ -22,16 +22,8 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n\nevent.Records.forEach((record) => {\n        console.log(record.eventID);\n        console.log(record.eventName);\n        console.log('DynamoDB Record: %j', record.dynamodb);\n    });\n    return `Successfully processed ${event.Records.length} records.`;\n}",
-        "triggers": [
-          {
-            "resourceName": "ddbNew",
-            "config": {
-              "StartingPosition": "TRIM_HORIZON",
-              "BatchSize": 100
-            }
-          }
-        ],
+        "code": "let AWS = require('aws-sdk');\nconst ddb = new AWS.DynamoDB.DocumentClient();\n\nexports.handler = function (event, context, callback) {\n\n    event.Records.forEach((record) => {\n        console.log(record.eventID);\n        console.log(record.eventName);\n        console.log('DynamoDB Record: %j', record.dynamodb);\n    });\n    return `Successfully processed ${event.Records.length} records.`;\n}",
+        "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -40,11 +32,11 @@
           "layers": []
         },
         "testCases": {
-          "a15aa637-a459-45d3-b521-6583224b177b": {
-            "id": "a15aa637-a459-45d3-b521-6583224b177b",
+          "54a083bd-c833-4743-813c-7d9aebfc02ac": {
+            "id": "54a083bd-c833-4743-813c-7d9aebfc02ac",
             "name": "Unnamed event",
             "functionId": "9033302b-487e-4d5f-a411-d61fe3902eaa",
-            "event": "{\n    \"Keys\":{\n        \"uderId\":1,\n        \"name\":\"kk\"\n    }\n}"
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
           }
         }
       }
@@ -72,12 +64,39 @@
             "mode": 0
           },
           "parameters": {
-            "Key": {},
-            "Item": {},
-            "ExpressionAttributeValues": {}
+            "mode": 0,
+            "operation": "put",
+            "table": {
+              "arn": "",
+              "name": "New",
+              "partitionKey": "ID",
+              "partitionKeyType": "N",
+              "hasSortKey": false,
+              "sortKey": "",
+              "sortKeyType": "S",
+              "mode": 0
+            },
+            "parameters": {
+              "Key": {},
+              "Item": {
+                "ID": 4
+              },
+              "ExpressionAttributeValues": {}
+            },
+            "triggerParams": {},
+            "validator": {
+              "validatableFields": {},
+              "validity": true
+            },
+            "valid": true,
+            "triggerConfig": {
+              "StartingPosition": "TRIM_HORIZON",
+              "BatchSize": 100
+            },
+            "TableName": "New"
           },
           "triggerParams": {
-            "StartingPosition": "TRIM_HORIZON",
+            "StartingPosition": "LATEST",
             "BatchSize": 100
           },
           "validator": {
@@ -104,7 +123,14 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
     }
   },
   "PROJECT_META": {
@@ -114,7 +140,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1550639938389
+    "lastSave": 1550644709011
   },
   "VCS_STATE": {
     "provider": "GitHub",
