@@ -8,8 +8,7 @@
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad",
-          "4e2718fb-a0ca-485b-af46-2e0772f18cb8"
+          "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad"
         ],
         "isRemovable": false,
         "filePath": "l"
@@ -23,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "let udith_layer = require('/opt/sample-lambda-layer');\n\nexports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
@@ -31,7 +30,7 @@
           "timeout": 60,
           "memory": 128,
           "layers": [
-            "arn:aws:lambda:us-east-1:318300609668:layer:ktest-layer:1"
+            "arn:aws:lambda:us-east-1:318300609668:layer:sample-layer-udith:5"
           ]
         },
         "testCases": {
@@ -42,42 +41,14 @@
             "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
           }
         }
-      },
-      "4e2718fb-a0ca-485b-af46-2e0772f18cb8": {
-        "id": "4e2718fb-a0ca-485b-af46-2e0772f18cb8",
-        "parent": "71f9cc37-342e-418c-9ecc-729e7397233e",
-        "name": "new.js",
-        "type": "LAMBDA_FILE",
-        "isDirectory": false,
-        "children": [],
-        "isRemovable": true,
-        "filePath": "l/new.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
-        "triggers": [],
-        "config": {
-          "runtime": "nodejs8.10",
-          "handler": "handler",
-          "timeout": 60,
-          "memory": 128,
-          "layers": [
-            "arn:aws:lambda:us-east-1:318300609668:layer:ktest-layer:2"
-          ]
-        },
-        "testCases": {
-          "3bcb0f4b-0e4e-44e5-b0a2-6b0d4b05a307": {
-            "id": "3bcb0f4b-0e4e-44e5-b0a2-6b0d4b05a307",
-            "name": "Unnamed event",
-            "functionId": "4e2718fb-a0ca-485b-af46-2e0772f18cb8",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
       }
     },
-    "deletedFiles": [],
+    "deletedFiles": [
+      "l/new.js"
+    ],
     "rootNode": "71f9cc37-342e-418c-9ecc-729e7397233e",
     "openFiles": [
-      "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad",
-      "4e2718fb-a0ca-485b-af46-2e0772f18cb8"
+      "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad"
     ],
     "currentFileId": "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad",
     "resources": {},
@@ -106,7 +77,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1550665290554
+    "lastSave": 1550730614208
   },
   "VCS_STATE": {
     "provider": "GitHub",
