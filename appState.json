@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let udith_layer = require('/opt/sample-lambda-layer');\n\nexports.handler = function(event, context, callback) {\n    console.log(udith_layer);\n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "let udith_layer = require('/opt/sample-lambda-layer');\n\nexports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
@@ -52,7 +52,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/public.js",
-        "code": "let bash = require('/opt/git-lambda-layer');\nexports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
@@ -60,8 +60,16 @@
           "timeout": 60,
           "memory": 128,
           "layers": [
-            "arn:aws:lambda:us-east-1:744348701589:layer:bash:4"
+            "arn:aws:lambda:us-east-1:066549572091:layer:epsagon-node-layer:1"
           ]
+        },
+        "testCases": {
+          "5b05c580-f250-46a0-a937-1ad76640a2a0": {
+            "id": "5b05c580-f250-46a0-a937-1ad76640a2a0",
+            "name": "Unnamed event",
+            "functionId": "821b029c-d4d7-4ac0-bb5f-0afa2a39494d",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
         }
       }
     },
@@ -98,7 +106,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1550731429442
+    "lastSave": 1550738502654
   },
   "VCS_STATE": {
     "provider": "GitHub",
