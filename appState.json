@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function(event, context, callback) {\nstorage.objects.list({\n    bucket: 'kknew',\n    maxResults: 10,\n    prefix: ''\n})\n    .then(response => {\n        console.log(response.data);           // successful response\n        /*\n\n        WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n\n        response.data = {\n            \"kind\": \"storage#objects\",\n            \"items\": [\n                {\n                    \"kind\": \"storage#object\",\n                    \"id\": \"<bucket>/<object>/<timestamp>\",\n                    \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                    \"name\": \"<object>\",\n                    \"bucket\": \"<bucket>\",\n                    \"contentType\": \"<content-type>\",\n                    \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                    \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                    \"size\": \"<bytes>\",\n                    \"md5Hash\": \"<hash>\",\n                    \"metadata\": {\n                        \"<key1>\": \"<val1>\",\n                        \"<key2>\": \"<val2>\"\n                    },\n                    \"crc32c\": \"<crc>\",\n                    \"etag\": \"<etag>\"\n                    // , ...\n                }\n                // , ...\n            ]\n        }\n        */\n    })\n    .catch(err => {\n        console.log(err, err.stack); // an error occurred\n    });\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function (event, context, callback) {\n    storage.objects.list({\n        bucket: 'sigma-slappforge-webhook-gcp-build-artifacts',\n        maxResults: 10,\n        prefix: ''\n    })\n        .then(response => {\n            console.log(response.data);           // successful response\n            /*\n    \n            WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n    \n            response.data = {\n                \"kind\": \"storage#objects\",\n                \"items\": [\n                    {\n                        \"kind\": \"storage#object\",\n                        \"id\": \"<bucket>/<object>/<timestamp>\",\n                        \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                        \"name\": \"<object>\",\n                        \"bucket\": \"<bucket>\",\n                        \"contentType\": \"<content-type>\",\n                        \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"size\": \"<bytes>\",\n                        \"md5Hash\": \"<hash>\",\n                        \"metadata\": {\n                            \"<key1>\": \"<val1>\",\n                            \"<key2>\": \"<val2>\"\n                        },\n                        \"crc32c\": \"<crc>\",\n                        \"etag\": \"<etag>\"\n                        // , ...\n                    }\n                    // , ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
@@ -31,6 +31,14 @@
           "timeout": 60,
           "memory": 128,
           "layers": []
+        },
+        "testCases": {
+          "ff1f9007-00fb-4cf0-9dec-82be9342fd16": {
+            "id": "ff1f9007-00fb-4cf0-9dec-82be9342fd16",
+            "name": "Unnamed event",
+            "functionId": "c5dea4dd-a001-4737-ad29-c7e1357e8e83",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
         }
       },
       "ec7b60cc-bc62-44a7-8154-10dcd33eb54b": {
@@ -60,6 +68,17 @@
           "mode": 1,
           "bucket": {
             "name": "kknew"
+          }
+        },
+        "globallyEditable": false
+      },
+      "storagesigmaSlappforgeWebhookGcpBuildArtifacts": {
+        "name": "storagesigmaSlappforgeWebhookGcpBuildArtifacts",
+        "type": "storage",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "name": "sigma-slappforge-webhook-gcp-build-artifacts"
           }
         },
         "globallyEditable": false
@@ -113,7 +132,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1551256284273
+    "lastSave": 1551256478415
   },
   "VCS_STATE": {
     "provider": "GitHub",
