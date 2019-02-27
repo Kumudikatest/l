@@ -1,112 +1,117 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "71f9cc37-342e-418c-9ecc-729e7397233e": {
-        "id": "71f9cc37-342e-418c-9ecc-729e7397233e",
+      "f4055489-8361-44f5-aa6f-3b36865f2916": {
+        "id": "f4055489-8361-44f5-aa6f-3b36865f2916",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad",
-          "821b029c-d4d7-4ac0-bb5f-0afa2a39494d"
+          "b6f04f68-a335-446e-b46e-a5de39138694",
+          "a80fe197-16cb-4307-b9ed-f384bee35950"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad": {
-        "id": "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad",
-        "parent": "71f9cc37-342e-418c-9ecc-729e7397233e",
-        "name": "lambda.js",
+      "b6f04f68-a335-446e-b46e-a5de39138694": {
+        "id": "b6f04f68-a335-446e-b46e-a5de39138694",
+        "parent": "f4055489-8361-44f5-aa6f-3b36865f2916",
+        "name": "function.js",
         "type": "LAMBDA_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "l/lambda.js",
-        "code": "let udith_layer = require('/opt/sample-lambda-layer');\n\nexports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
-        "triggers": [],
+        "filePath": "l/function.js",
+        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst pubsub = google.pubsub('v1');\n\nexports.handler = function (request, response) {\n    pubsub.projects.topics.subscriptions.list({\n        topic: `projects/${process.env.GCP_PROJECT}/topics/new`,\n        pageSize: 10\n    })\n        .then(response => {\n            console.log(response.data);  // successful response\n            /*\n            response.data = {\n                \"subscriptions\": [\n                    \"projects/<project>/subscriptions/<subscription-1>\",\n                    \"projects/<project>/subscriptions/<subscription-2>\",\n                    ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    response.send({ \"message\": \"Successfully executed\" });\n}",
+        "triggers": [
+          {
+            "resourceName": "http-trigger",
+            "config": {}
+          }
+        ],
         "config": {
           "runtime": "nodejs8.10",
-          "handler": "handler",
           "timeout": 60,
           "memory": 128,
-          "layers": [
-            "arn:aws:lambda:us-east-1:318300609668:layer:sample-layer-udith:5"
-          ]
-        },
-        "testCases": {
-          "a0b74301-b335-4066-9bd9-ff8da81e92f4": {
-            "id": "a0b74301-b335-4066-9bd9-ff8da81e92f4",
-            "name": "Unnamed event",
-            "functionId": "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
+          "triggerType": 0
         }
       },
-      "821b029c-d4d7-4ac0-bb5f-0afa2a39494d": {
-        "id": "821b029c-d4d7-4ac0-bb5f-0afa2a39494d",
-        "parent": "71f9cc37-342e-418c-9ecc-729e7397233e",
-        "name": "public.js",
-        "type": "LAMBDA_FILE",
+      "9eb8d1e0-2bb4-49fa-bb03-0fd877ed6be7": {
+        "id": "9eb8d1e0-2bb4-49fa-bb03-0fd877ed6be7",
+        "parent": null,
+        "name": "index.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": false,
+        "filePath": "index.js",
+        "code": "// This file is used to register all your cloud functions in GCP.\n// DO NOT EDIT/DELETE THIS, UNLESS YOU KNOW WHAT YOU ARE DOING.\n\nexports.lfunction = require(\"./l/function.js\").handler;",
+        "triggers": []
+      },
+      "a80fe197-16cb-4307-b9ed-f384bee35950": {
+        "id": "a80fe197-16cb-4307-b9ed-f384bee35950",
+        "parent": "f4055489-8361-44f5-aa6f-3b36865f2916",
+        "name": "Authorizer.js",
+        "type": "JS_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "l/public.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
-        "triggers": [],
-        "config": {
-          "runtime": "nodejs8.10",
-          "handler": "handler",
-          "timeout": 60,
-          "memory": 128,
-          "layers": [
-            "arn:aws:lambda:us-east-1:066549572091:layer:epsagon-node-layer:1"
-          ]
-        },
-        "testCases": {
-          "5b05c580-f250-46a0-a937-1ad76640a2a0": {
-            "id": "5b05c580-f250-46a0-a937-1ad76640a2a0",
-            "name": "Unnamed event",
-            "functionId": "821b029c-d4d7-4ac0-bb5f-0afa2a39494d",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
+        "filePath": "l/Authorizer.js",
+        "code": "const google = require(\"googleapis\").google;\n\ngoogle.options({auth: new google.auth.Compute()});",
+        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "71f9cc37-342e-418c-9ecc-729e7397233e",
+    "rootNode": "f4055489-8361-44f5-aa6f-3b36865f2916",
     "openFiles": [
-      "2c55bdbe-da7b-4c9d-b02b-a92751fb49ad",
-      "821b029c-d4d7-4ac0-bb5f-0afa2a39494d"
+      "b6f04f68-a335-446e-b46e-a5de39138694"
     ],
-    "currentFileId": "821b029c-d4d7-4ac0-bb5f-0afa2a39494d",
-    "resources": {},
+    "currentFileId": "b6f04f68-a335-446e-b46e-a5de39138694",
+    "resources": {
+      "http-trigger": {
+        "name": "http-trigger",
+        "type": "http-trigger",
+        "config": {},
+        "globallyEditable": false
+      },
+      "pubsubnew": {
+        "name": "pubsubnew",
+        "type": "pubsub",
+        "config": {
+          "mode": 0,
+          "topic": {
+            "name": "new",
+            "subscriptions": []
+          }
+        },
+        "globallyEditable": false
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
     },
-    "envVariables": [
-      {
-        "lambdaId": "all",
-        "varKey": "SIGMA_AWS_ACC_ID",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": false
-      }
-    ],
+    "envVariables": [],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "googleapis": {
+          "name": "googleapis",
+          "version": "29.0.0",
+          "dev": false,
+          "notRemovable": false
+        }
+      }
     }
   },
   "PROJECT_META": {
     "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
-    "projectRegion": "us-east-1",
-    "platform": "AWS",
+    "projectRegion": "us-east1",
+    "platform": "GCP",
     "platformRegions": {},
-    "lastSave": 1550738502654
+    "lastSave": 1551249262301
   },
   "VCS_STATE": {
     "provider": "GitHub",
