@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/function.js",
-        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst pubsub = google.pubsub('v1');\n\nexports.handler = function (request, response) {\n    pubsub.projects.topics.subscriptions.list({\n        topic: `projects/${process.env.GCP_PROJECT}/topics/new`,\n        pageSize: 10\n    })\n        .then(response => {\n            console.log(response.data);  // successful response\n            /*\n            response.data = {\n                \"subscriptions\": [\n                    \"projects/<project>/subscriptions/<subscription-1>\",\n                    \"projects/<project>/subscriptions/<subscription-2>\",\n                    ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    response.send({ \"message\": \"Successfully executed\" });\n}",
+        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function (request, response) {\n    storage.objects.list({\n        bucket: 'new-bucket',\n        maxResults: 10,\n        prefix: ''\n    })\n        .then(response => {\n            console.log(response.data);           // successful response\n            /*\n    \n            WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n    \n            response.data = {\n                \"kind\": \"storage#objects\",\n                \"items\": [\n                    {\n                        \"kind\": \"storage#object\",\n                        \"id\": \"<bucket>/<object>/<timestamp>\",\n                        \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                        \"name\": \"<object>\",\n                        \"bucket\": \"<bucket>\",\n                        \"contentType\": \"<content-type>\",\n                        \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"size\": \"<bytes>\",\n                        \"md5Hash\": \"<hash>\",\n                        \"metadata\": {\n                            \"<key1>\": \"<val1>\",\n                            \"<key2>\": \"<val2>\"\n                        },\n                        \"crc32c\": \"<crc>\",\n                        \"etag\": \"<etag>\"\n                        // , ...\n                    }\n                    // , ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n    response.send({ \"message\": \"Successfully executed\" });\n}",
         "triggers": [
           {
             "resourceName": "http-trigger",
@@ -35,6 +35,14 @@
           "timeout": 60,
           "memory": 128,
           "triggerType": 0
+        },
+        "testCases": {
+          "6647fa20-115a-4730-8195-59755b8f9ca8": {
+            "id": "6647fa20-115a-4730-8195-59755b8f9ca8",
+            "name": "Unnamed event",
+            "functionId": "b6f04f68-a335-446e-b46e-a5de39138694",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
         }
       },
       "9eb8d1e0-2bb4-49fa-bb03-0fd877ed6be7": {
@@ -86,6 +94,17 @@
           }
         },
         "globallyEditable": false
+      },
+      "storagenewBucket": {
+        "name": "storagenewBucket",
+        "type": "storage",
+        "config": {
+          "mode": 0,
+          "bucket": {
+            "name": "new-bucket"
+          }
+        },
+        "globallyEditable": false
       }
     },
     "customTemplate": {
@@ -111,7 +130,7 @@
     "projectRegion": "us-east1",
     "platform": "GCP",
     "platformRegions": {},
-    "lastSave": 1551249262301
+    "lastSave": 1551249535139
   },
   "VCS_STATE": {
     "provider": "GitHub",
