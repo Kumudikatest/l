@@ -1,107 +1,65 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "f4055489-8361-44f5-aa6f-3b36865f2916": {
-        "id": "f4055489-8361-44f5-aa6f-3b36865f2916",
+      "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c": {
+        "id": "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "b6f04f68-a335-446e-b46e-a5de39138694",
-          "a80fe197-16cb-4307-b9ed-f384bee35950"
+          "c5dea4dd-a001-4737-ad29-c7e1357e8e83",
+          "ec7b60cc-bc62-44a7-8154-10dcd33eb54b"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "b6f04f68-a335-446e-b46e-a5de39138694": {
-        "id": "b6f04f68-a335-446e-b46e-a5de39138694",
-        "parent": "f4055489-8361-44f5-aa6f-3b36865f2916",
-        "name": "function.js",
+      "c5dea4dd-a001-4737-ad29-c7e1357e8e83": {
+        "id": "c5dea4dd-a001-4737-ad29-c7e1357e8e83",
+        "parent": "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c",
+        "name": "lambda.js",
         "type": "LAMBDA_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "l/function.js",
-        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function (request, response) {\n    storage.objects.list({\n        bucket: 'new-bucket',\n        maxResults: 10,\n        prefix: ''\n    })\n        .then(response => {\n            console.log(response.data);           // successful response\n            /*\n    \n            WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n    \n            response.data = {\n                \"kind\": \"storage#objects\",\n                \"items\": [\n                    {\n                        \"kind\": \"storage#object\",\n                        \"id\": \"<bucket>/<object>/<timestamp>\",\n                        \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                        \"name\": \"<object>\",\n                        \"bucket\": \"<bucket>\",\n                        \"contentType\": \"<content-type>\",\n                        \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"size\": \"<bytes>\",\n                        \"md5Hash\": \"<hash>\",\n                        \"metadata\": {\n                            \"<key1>\": \"<val1>\",\n                            \"<key2>\": \"<val2>\"\n                        },\n                        \"crc32c\": \"<crc>\",\n                        \"etag\": \"<etag>\"\n                        // , ...\n                    }\n                    // , ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n    response.send({ \"message\": \"Successfully executed\" });\n}",
-        "triggers": [
-          {
-            "resourceName": "http-trigger",
-            "config": {}
-          }
-        ],
+        "filePath": "l/lambda.js",
+        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function(event, context, callback) {\nstorage.objects.list({\n    bucket: 'kknew',\n    maxResults: 10,\n    prefix: ''\n})\n    .then(response => {\n        console.log(response.data);           // successful response\n        /*\n\n        WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n\n        response.data = {\n            \"kind\": \"storage#objects\",\n            \"items\": [\n                {\n                    \"kind\": \"storage#object\",\n                    \"id\": \"<bucket>/<object>/<timestamp>\",\n                    \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                    \"name\": \"<object>\",\n                    \"bucket\": \"<bucket>\",\n                    \"contentType\": \"<content-type>\",\n                    \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                    \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                    \"size\": \"<bytes>\",\n                    \"md5Hash\": \"<hash>\",\n                    \"metadata\": {\n                        \"<key1>\": \"<val1>\",\n                        \"<key2>\": \"<val2>\"\n                    },\n                    \"crc32c\": \"<crc>\",\n                    \"etag\": \"<etag>\"\n                    // , ...\n                }\n                // , ...\n            ]\n        }\n        */\n    })\n    .catch(err => {\n        console.log(err, err.stack); // an error occurred\n    });\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
+          "handler": "handler",
           "timeout": 60,
           "memory": 128,
-          "triggerType": 0
-        },
-        "testCases": {
-          "6647fa20-115a-4730-8195-59755b8f9ca8": {
-            "id": "6647fa20-115a-4730-8195-59755b8f9ca8",
-            "name": "Unnamed event",
-            "functionId": "b6f04f68-a335-446e-b46e-a5de39138694",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
+          "layers": []
         }
       },
-      "9eb8d1e0-2bb4-49fa-bb03-0fd877ed6be7": {
-        "id": "9eb8d1e0-2bb4-49fa-bb03-0fd877ed6be7",
-        "parent": null,
-        "name": "index.js",
-        "type": "JS_FILE",
-        "isDirectory": false,
-        "children": [],
-        "isRemovable": false,
-        "filePath": "index.js",
-        "code": "// This file is used to register all your cloud functions in GCP.\n// DO NOT EDIT/DELETE THIS, UNLESS YOU KNOW WHAT YOU ARE DOING.\n\nexports.lfunction = require(\"./l/function.js\").handler;",
-        "triggers": []
-      },
-      "a80fe197-16cb-4307-b9ed-f384bee35950": {
-        "id": "a80fe197-16cb-4307-b9ed-f384bee35950",
-        "parent": "f4055489-8361-44f5-aa6f-3b36865f2916",
+      "ec7b60cc-bc62-44a7-8154-10dcd33eb54b": {
+        "id": "ec7b60cc-bc62-44a7-8154-10dcd33eb54b",
+        "parent": "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c",
         "name": "Authorizer.js",
         "type": "JS_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/Authorizer.js",
-        "code": "const google = require(\"googleapis\").google;\n\ngoogle.options({auth: new google.auth.Compute()});",
+        "code": "const google = require(\"googleapis\").google;\n\nconst key = JSON.parse(process.env.GCP_SERVICE_ACCOUNT_KEY);\nconst jwtClient = new google.auth.JWT({\n    email: key.client_email,\n    key: key.private_key,\n    scopes: [\"https://www.googleapis.com/auth/cloud-platform\"]\n});\n\ngoogle.options({auth: jwtClient, project: process.env.GCP_PROJECT});",
         "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "f4055489-8361-44f5-aa6f-3b36865f2916",
+    "rootNode": "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c",
     "openFiles": [
-      "b6f04f68-a335-446e-b46e-a5de39138694"
+      "c5dea4dd-a001-4737-ad29-c7e1357e8e83"
     ],
-    "currentFileId": "b6f04f68-a335-446e-b46e-a5de39138694",
+    "currentFileId": "c5dea4dd-a001-4737-ad29-c7e1357e8e83",
     "resources": {
-      "http-trigger": {
-        "name": "http-trigger",
-        "type": "http-trigger",
-        "config": {},
-        "globallyEditable": false
-      },
-      "pubsubnew": {
-        "name": "pubsubnew",
-        "type": "pubsub",
-        "config": {
-          "mode": 0,
-          "topic": {
-            "name": "new",
-            "subscriptions": []
-          }
-        },
-        "globallyEditable": false
-      },
-      "storagenewBucket": {
-        "name": "storagenewBucket",
+      "storagekknew": {
+        "name": "storagekknew",
         "type": "storage",
         "config": {
-          "mode": 0,
+          "mode": 1,
           "bucket": {
-            "name": "new-bucket"
+            "name": "kknew"
           }
         },
         "globallyEditable": false
@@ -111,7 +69,32 @@
       "dialect": null,
       "definitions": {}
     },
-    "envVariables": [],
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "GCP_SERVICE_ACCOUNT_KEY",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "GCP_PROJECT",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
     "packageJSON": {
       "dependencies": {
         "googleapis": {
@@ -127,10 +110,10 @@
     "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
-    "projectRegion": "us-east1",
-    "platform": "GCP",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1551249535139
+    "lastSave": 1551256284273
   },
   "VCS_STATE": {
     "provider": "GitHub",
