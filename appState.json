@@ -1,29 +1,28 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c": {
-        "id": "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c",
+      "bb8e015c-d276-476c-8c3b-9900d410a1a3": {
+        "id": "bb8e015c-d276-476c-8c3b-9900d410a1a3",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "c5dea4dd-a001-4737-ad29-c7e1357e8e83",
-          "ec7b60cc-bc62-44a7-8154-10dcd33eb54b"
+          "5a949eae-d4d7-4001-8f67-7ddeed2fac04"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "c5dea4dd-a001-4737-ad29-c7e1357e8e83": {
-        "id": "c5dea4dd-a001-4737-ad29-c7e1357e8e83",
-        "parent": "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c",
+      "5a949eae-d4d7-4001-8f67-7ddeed2fac04": {
+        "id": "5a949eae-d4d7-4001-8f67-7ddeed2fac04",
+        "parent": "bb8e015c-d276-476c-8c3b-9900d410a1a3",
         "name": "lambda.js",
         "type": "LAMBDA_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst storage = google.storage('v1');\n\nexports.handler = function (event, context, callback) {\n    storage.objects.list({\n        bucket: 'sigma-slappforge-webhook-gcp-build-artifacts',\n        maxResults: 10,\n        prefix: ''\n    })\n        .then(response => {\n            console.log(response.data);           // successful response\n            /*\n    \n            WARNING: response.data.items will be missing altogether (instead of being empty) if there are no matches!  \n    \n            response.data = {\n                \"kind\": \"storage#objects\",\n                \"items\": [\n                    {\n                        \"kind\": \"storage#object\",\n                        \"id\": \"<bucket>/<object>/<timestamp>\",\n                        \"selfLink\": \"https://www.googleapis.com/storage/v1/b/<bucket>/o/<object>\",\n                        \"name\": \"<object>\",\n                        \"bucket\": \"<bucket>\",\n                        \"contentType\": \"<content-type>\",\n                        \"timeCreated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"updated\": \"<yyyy-MM-ddTHH:mm:ss.###Z>\",\n                        \"size\": \"<bytes>\",\n                        \"md5Hash\": \"<hash>\",\n                        \"metadata\": {\n                            \"<key1>\": \"<val1>\",\n                            \"<key2>\": \"<val2>\"\n                        },\n                        \"crc32c\": \"<crc>\",\n                        \"etag\": \"<etag>\"\n                        // , ...\n                    }\n                    // , ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "exports.handler = function(event, context, callback) {\n    //exsiting lambda\n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
@@ -31,59 +30,16 @@
           "timeout": 60,
           "memory": 128,
           "layers": []
-        },
-        "testCases": {
-          "ff1f9007-00fb-4cf0-9dec-82be9342fd16": {
-            "id": "ff1f9007-00fb-4cf0-9dec-82be9342fd16",
-            "name": "Unnamed event",
-            "functionId": "c5dea4dd-a001-4737-ad29-c7e1357e8e83",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
         }
-      },
-      "ec7b60cc-bc62-44a7-8154-10dcd33eb54b": {
-        "id": "ec7b60cc-bc62-44a7-8154-10dcd33eb54b",
-        "parent": "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c",
-        "name": "Authorizer.js",
-        "type": "JS_FILE",
-        "isDirectory": false,
-        "children": [],
-        "isRemovable": true,
-        "filePath": "l/Authorizer.js",
-        "code": "const google = require(\"googleapis\").google;\n\nconst key = JSON.parse(process.env.GCP_SERVICE_ACCOUNT_KEY);\nconst jwtClient = new google.auth.JWT({\n    email: key.client_email,\n    key: key.private_key,\n    scopes: [\"https://www.googleapis.com/auth/cloud-platform\"]\n});\n\ngoogle.options({auth: jwtClient, project: process.env.GCP_PROJECT});",
-        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "4dea4716-b4e0-4cbf-80e3-b5d8bb1ee00c",
+    "rootNode": "bb8e015c-d276-476c-8c3b-9900d410a1a3",
     "openFiles": [
-      "c5dea4dd-a001-4737-ad29-c7e1357e8e83"
+      "5a949eae-d4d7-4001-8f67-7ddeed2fac04"
     ],
-    "currentFileId": "c5dea4dd-a001-4737-ad29-c7e1357e8e83",
-    "resources": {
-      "storagekknew": {
-        "name": "storagekknew",
-        "type": "storage",
-        "config": {
-          "mode": 1,
-          "bucket": {
-            "name": "kknew"
-          }
-        },
-        "globallyEditable": false
-      },
-      "storagesigmaSlappforgeWebhookGcpBuildArtifacts": {
-        "name": "storagesigmaSlappforgeWebhookGcpBuildArtifacts",
-        "type": "storage",
-        "config": {
-          "mode": 1,
-          "bucket": {
-            "name": "sigma-slappforge-webhook-gcp-build-artifacts"
-          }
-        },
-        "globallyEditable": false
-      }
-    },
+    "currentFileId": "5a949eae-d4d7-4001-8f67-7ddeed2fac04",
+    "resources": {},
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -96,33 +52,10 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
-      },
-      {
-        "lambdaId": "all",
-        "varKey": "GCP_SERVICE_ACCOUNT_KEY",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": false
-      },
-      {
-        "lambdaId": "all",
-        "varKey": "GCP_PROJECT",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": false
       }
     ],
     "packageJSON": {
-      "dependencies": {
-        "googleapis": {
-          "name": "googleapis",
-          "version": "29.0.0",
-          "dev": false,
-          "notRemovable": false
-        }
-      }
+      "dependencies": {}
     }
   },
   "PROJECT_META": {
@@ -132,7 +65,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1551256478415
+    "lastSave": 1552476342883
   },
   "VCS_STATE": {
     "provider": "GitHub",
