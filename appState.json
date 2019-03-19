@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "const mysql = require('mysql');\n\nexports.handler = function(event, context, callback) {\n   \n    var connection = mysql.createConnection({\n        host: process.env.host,\n        user: process.env.user,\n        port: process.env.port,\n        database: process.env.database\n    });\n    \n    connection.connect();\n\n    connection.query('SELECT * FROM family LIMIT 5', function (error, results, fields) {\n        if (error) throw error;\n        console.log('The solution is: ', results);\n        callback(null, { results });\n    });\n\n    connection.end();\n\n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "exports.handler = function(event, context, callback) {\n\n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "triggers": [
           {
             "resourceName": "apigusEast1TestAPIMyLambdapost",
@@ -144,7 +144,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1552977567851
+    "lastSave": 1552980363236
   },
   "VCS_STATE": {
     "provider": "GitHub",
