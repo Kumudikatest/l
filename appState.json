@@ -1,48 +1,87 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "bb8e015c-d276-476c-8c3b-9900d410a1a3": {
-        "id": "bb8e015c-d276-476c-8c3b-9900d410a1a3",
+      "e42cfd2f-3112-4946-b08b-61805b42a8eb": {
+        "id": "e42cfd2f-3112-4946-b08b-61805b42a8eb",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "042fc4a9-412b-4f56-b7c8-589ce2574723"
+          "2eac5d1c-817b-471a-a3ac-916a599ea598"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "042fc4a9-412b-4f56-b7c8-589ce2574723": {
-        "id": "042fc4a9-412b-4f56-b7c8-589ce2574723",
-        "parent": "bb8e015c-d276-476c-8c3b-9900d410a1a3",
+      "2eac5d1c-817b-471a-a3ac-916a599ea598": {
+        "id": "2eac5d1c-817b-471a-a3ac-916a599ea598",
+        "parent": "e42cfd2f-3112-4946-b08b-61805b42a8eb",
         "name": "lambda.js",
         "type": "LAMBDA_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    //new lambda\n    callback(null, {\"message\": \"Successfully executed\"});\n}",
-        "triggers": [],
+        "code": "const mysql = require('mysql');\n\nexports.handler = function(event, context, callback) {\n   \n    var connection = mysql.createConnection({\n        host: process.env.host,\n        user: process.env.user,\n        port: process.env.port,\n        database: process.env.database\n    });\n    \n    connection.connect();\n\n    connection.query('SELECT * FROM family LIMIT 5', function (error, results, fields) {\n        if (error) throw error;\n        console.log('The solution is: ', results);\n        callback(null, { results });\n    });\n\n    connection.end();\n\n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "triggers": [
+          {
+            "resourceName": "apigusEast1TestAPIMyLambdapost",
+            "config": {}
+          }
+        ],
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
           "timeout": 60,
           "memory": 128,
           "layers": []
+        },
+        "testCases": {
+          "386f9572-22cc-4131-8207-550f08bb7afa": {
+            "id": "386f9572-22cc-4131-8207-550f08bb7afa",
+            "name": "Test event",
+            "functionId": "2eac5d1c-817b-471a-a3ac-916a599ea598",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
         }
       }
     },
-    "deletedFiles": [
-      "l/lambda.js",
-      "l/newlambda.js"
-    ],
-    "rootNode": "bb8e015c-d276-476c-8c3b-9900d410a1a3",
+    "deletedFiles": [],
+    "rootNode": "e42cfd2f-3112-4946-b08b-61805b42a8eb",
     "openFiles": [
-      "042fc4a9-412b-4f56-b7c8-589ce2574723"
+      "2eac5d1c-817b-471a-a3ac-916a599ea598"
     ],
-    "currentFileId": "042fc4a9-412b-4f56-b7c8-589ce2574723",
-    "resources": {},
+    "currentFileId": "2eac5d1c-817b-471a-a3ac-916a599ea598",
+    "resources": {
+      "apigusEast1TestAPIMyLambdapost": {
+        "name": "apigusEast1TestAPIMyLambdapost",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
+          "endpointType": "EDGE",
+          "rootResourceId": "h2lelj6j7k",
+          "existingResources": {
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/MyLambda",
+          "resourceName": "MyLambda",
+          "resourceId": "98nqbj",
+          "restMethod": "POST",
+          "proxyIntegration": true,
+          "enableCORS": true,
+          "stageMode": 0,
+          "stageName": "test11"
+        },
+        "globallyEditable": false
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -55,10 +94,47 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "host",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "user",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "port",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "database",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
       }
     ],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "mysql": {
+          "name": "mysql",
+          "version": "2.16.0"
+        }
+      }
     }
   },
   "PROJECT_META": {
@@ -68,7 +144,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1552476506897
+    "lastSave": 1552977567851
   },
   "VCS_STATE": {
     "provider": "GitHub",
