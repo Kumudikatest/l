@@ -1,21 +1,21 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "59e2f751-afc3-4903-afb0-4e5a80a571a5": {
-        "id": "59e2f751-afc3-4903-afb0-4e5a80a571a5",
+      "f2c52f7c-30a4-4bdb-90d6-d2b5b7ef30ec": {
+        "id": "f2c52f7c-30a4-4bdb-90d6-d2b5b7ef30ec",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "bdf2d09b-099b-474d-916d-bc6a07898c14"
+          "e9c44046-f747-43da-afbb-513d3f455ea8"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "bdf2d09b-099b-474d-916d-bc6a07898c14": {
-        "id": "bdf2d09b-099b-474d-916d-bc6a07898c14",
-        "parent": "59e2f751-afc3-4903-afb0-4e5a80a571a5",
+      "e9c44046-f747-43da-afbb-513d3f455ea8": {
+        "id": "e9c44046-f747-43da-afbb-513d3f455ea8",
+        "parent": "f2c52f7c-30a4-4bdb-90d6-d2b5b7ef30ec",
         "name": "lambda.js",
         "type": "LAMBDA_FILE",
         "isDirectory": false,
@@ -30,17 +30,23 @@
           "timeout": 60,
           "memory": 128,
           "layers": []
+        },
+        "testCases": {
+          "ba08cfbd-36c4-4bdc-b9c3-fed3ae3a4764": {
+            "id": "ba08cfbd-36c4-4bdc-b9c3-fed3ae3a4764",
+            "name": "Unnamed event",
+            "functionId": "e9c44046-f747-43da-afbb-513d3f455ea8",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
         }
       }
     },
-    "deletedFiles": [
-      "l/new.js"
-    ],
-    "rootNode": "59e2f751-afc3-4903-afb0-4e5a80a571a5",
+    "deletedFiles": [],
+    "rootNode": "f2c52f7c-30a4-4bdb-90d6-d2b5b7ef30ec",
     "openFiles": [
-      "bdf2d09b-099b-474d-916d-bc6a07898c14"
+      "e9c44046-f747-43da-afbb-513d3f455ea8"
     ],
-    "currentFileId": "bdf2d09b-099b-474d-916d-bc6a07898c14",
+    "currentFileId": "e9c44046-f747-43da-afbb-513d3f455ea8",
     "resources": {},
     "customTemplate": {
       "dialect": null,
@@ -64,10 +70,10 @@
     "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
-    "projectRegion": "us-east-1",
+    "projectRegion": "ap-southeast-2",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1553144577949
+    "lastSave": 1553147748793
   },
   "VCS_STATE": {
     "provider": "GitHub",
