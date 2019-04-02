@@ -1,29 +1,29 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "f2c52f7c-30a4-4bdb-90d6-d2b5b7ef30ec": {
-        "id": "f2c52f7c-30a4-4bdb-90d6-d2b5b7ef30ec",
+      "e64d7acf-05dd-4f00-b044-e0e679830c32": {
+        "id": "e64d7acf-05dd-4f00-b044-e0e679830c32",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "e9c44046-f747-43da-afbb-513d3f455ea8"
+          "6913b96a-1f6d-4622-93f7-77f486ed762d",
+          "069f4b50-efb7-494f-aece-208438659059"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "e9c44046-f747-43da-afbb-513d3f455ea8": {
-        "id": "e9c44046-f747-43da-afbb-513d3f455ea8",
-        "parent": "f2c52f7c-30a4-4bdb-90d6-d2b5b7ef30ec",
+      "6913b96a-1f6d-4622-93f7-77f486ed762d": {
+        "id": "6913b96a-1f6d-4622-93f7-77f486ed762d",
+        "parent": "e64d7acf-05dd-4f00-b044-e0e679830c32",
         "name": "lambda.js",
-        "type": "LAMBDA_FILE",
+        "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
         "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
-        "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -31,22 +31,35 @@
           "memory": 128,
           "layers": []
         },
-        "testCases": {
-          "ba08cfbd-36c4-4bdc-b9c3-fed3ae3a4764": {
-            "id": "ba08cfbd-36c4-4bdc-b9c3-fed3ae3a4764",
-            "name": "Unnamed event",
-            "functionId": "e9c44046-f747-43da-afbb-513d3f455ea8",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
+        "triggers": []
+      },
+      "069f4b50-efb7-494f-aece-208438659059": {
+        "id": "069f4b50-efb7-494f-aece-208438659059",
+        "parent": "e64d7acf-05dd-4f00-b044-e0e679830c32",
+        "name": "Newpython.py",
+        "type": "PYTHON_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "l/Newpython.py",
+        "code": "def handler(event, context):\n    \n    return {\"message\": \"Successfully executed\"}\n",
+        "config": {
+          "runtime": "python2.7",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "f2c52f7c-30a4-4bdb-90d6-d2b5b7ef30ec",
+    "rootNode": "e64d7acf-05dd-4f00-b044-e0e679830c32",
     "openFiles": [
-      "e9c44046-f747-43da-afbb-513d3f455ea8"
+      "6913b96a-1f6d-4622-93f7-77f486ed762d",
+      "069f4b50-efb7-494f-aece-208438659059"
     ],
-    "currentFileId": "e9c44046-f747-43da-afbb-513d3f455ea8",
+    "currentFileId": "6913b96a-1f6d-4622-93f7-77f486ed762d",
     "resources": {},
     "customTemplate": {
       "dialect": null,
@@ -70,10 +83,10 @@
     "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
-    "projectRegion": "ap-southeast-2",
+    "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1553147748793
+    "lastSave": 1554205358578
   },
   "VCS_STATE": {
     "provider": "GitHub",
