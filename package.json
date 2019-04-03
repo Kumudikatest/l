@@ -2,8 +2,9 @@
   "name": "l",
   "version": "1.0.0",
   "dependencies": {
-    "aws-sdk": "2.434.0",
     "mysql": "2.16.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "aws-sdk": "2.176.0"
+  }
 }
