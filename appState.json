@@ -1,22 +1,21 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "e64d7acf-05dd-4f00-b044-e0e679830c32": {
-        "id": "e64d7acf-05dd-4f00-b044-e0e679830c32",
+      "eb6a878c-e274-4b52-9aaf-4684c2d8a4a0": {
+        "id": "eb6a878c-e274-4b52-9aaf-4684c2d8a4a0",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "6913b96a-1f6d-4622-93f7-77f486ed762d",
-          "069f4b50-efb7-494f-aece-208438659059"
+          "6be146bb-87bc-4699-8ee0-558990609129"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "6913b96a-1f6d-4622-93f7-77f486ed762d": {
-        "id": "6913b96a-1f6d-4622-93f7-77f486ed762d",
-        "parent": "e64d7acf-05dd-4f00-b044-e0e679830c32",
+      "6be146bb-87bc-4699-8ee0-558990609129": {
+        "id": "6be146bb-87bc-4699-8ee0-558990609129",
+        "parent": "eb6a878c-e274-4b52-9aaf-4684c2d8a4a0",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
@@ -31,35 +30,23 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
-      },
-      "069f4b50-efb7-494f-aece-208438659059": {
-        "id": "069f4b50-efb7-494f-aece-208438659059",
-        "parent": "e64d7acf-05dd-4f00-b044-e0e679830c32",
-        "name": "Newpython.py",
-        "type": "PYTHON_LAMBDA",
-        "isDirectory": false,
-        "children": [],
-        "isRemovable": true,
-        "filePath": "l/Newpython.py",
-        "code": "def handler(event, context):\n    \n    return {\"message\": \"Successfully executed\"}\n",
-        "config": {
-          "runtime": "python2.7",
-          "handler": "handler",
-          "timeout": 60,
-          "memory": 128,
-          "layers": []
-        },
-        "triggers": []
+        "triggers": [],
+        "testCases": {
+          "ac2185a6-debd-417e-bf66-010fee917c0a": {
+            "id": "ac2185a6-debd-417e-bf66-010fee917c0a",
+            "name": "Unnamed event",
+            "functionId": "6be146bb-87bc-4699-8ee0-558990609129",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
+        }
       }
     },
     "deletedFiles": [],
-    "rootNode": "e64d7acf-05dd-4f00-b044-e0e679830c32",
+    "rootNode": "eb6a878c-e274-4b52-9aaf-4684c2d8a4a0",
     "openFiles": [
-      "6913b96a-1f6d-4622-93f7-77f486ed762d",
-      "069f4b50-efb7-494f-aece-208438659059"
+      "6be146bb-87bc-4699-8ee0-558990609129"
     ],
-    "currentFileId": "6913b96a-1f6d-4622-93f7-77f486ed762d",
+    "currentFileId": "6be146bb-87bc-4699-8ee0-558990609129",
     "resources": {},
     "customTemplate": {
       "dialect": null,
@@ -76,7 +63,18 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "version": "2.434.0",
+          "language": "javascript"
+        },
+        "mysql": {
+          "name": "mysql",
+          "version": "2.16.0",
+          "language": "javascript"
+        }
+      }
     }
   },
   "PROJECT_META": {
@@ -86,7 +84,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1554205358578
+    "lastSave": 1554288185855
   },
   "VCS_STATE": {
     "provider": "GitHub",
