@@ -8,22 +8,21 @@
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
-          "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7"
+          "64b298d2-8b8d-4263-82e6-2e8e63d82220"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
       "5532fa41-4096-46f7-8a4a-87ed45e46bbb": {
         "id": "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
-        "parent": "b4b6095e-d831-4646-a08c-c37575d8ca39",
+        "parent": "64b298d2-8b8d-4263-82e6-2e8e63d82220",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "l/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "filePath": "l/sub/lambda.js",
+        "code": "let AWS = require('aws-sdk')\nconst ddb = new AWS.DynamoDB.DocumentClient();\nddb.query({\n    TableName: 'py_table'\n}).promise()\n    .then((data) => {\n        //your logic goes here\n        console.log(data);\n    })\n    .catch((err) => {\n        //handle error\n    });\n",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -31,36 +30,126 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [],
+        "testCases": {
+          "f2dcc988-ab0a-4507-977f-c7e3847355d4": {
+            "id": "f2dcc988-ab0a-4507-977f-c7e3847355d4",
+            "name": "Unnamed event",
+            "functionId": "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
+        }
       },
-      "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7": {
-        "id": "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7",
+      "64b298d2-8b8d-4263-82e6-2e8e63d82220": {
+        "id": "64b298d2-8b8d-4263-82e6-2e8e63d82220",
         "parent": "b4b6095e-d831-4646-a08c-c37575d8ca39",
-        "name": "new.js",
-        "type": "JS_LAMBDA",
-        "isDirectory": false,
-        "children": [],
+        "name": "sub",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "5532fa41-4096-46f7-8a4a-87ed45e46bbb"
+        ],
         "isRemovable": true,
-        "filePath": "l/new.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
-        "config": {
-          "runtime": "nodejs6.10",
-          "handler": "handler",
-          "timeout": 60,
-          "memory": 128,
-          "layers": []
-        },
-        "triggers": []
+        "filePath": "l/sub"
       }
     },
-    "deletedFiles": [],
+    "deletedFiles": [
+      "l/lambda.js",
+      "l/new.js"
+    ],
     "rootNode": "b4b6095e-d831-4646-a08c-c37575d8ca39",
     "openFiles": [
-      "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
-      "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7"
+      "5532fa41-4096-46f7-8a4a-87ed45e46bbb"
     ],
-    "currentFileId": "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7",
-    "resources": {},
+    "currentFileId": "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
+    "resources": {
+      "apigusEast1addNotenotesget": {
+        "name": "apigusEast1addNotenotesget",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "addNote",
+          "apiId": "7hlarzyh5j",
+          "endpointType": "EDGE",
+          "rootResourceId": "cdrq2qazvd",
+          "existingResources": {
+            "/notes": "blb4ta",
+            "/": "cdrq2qazvd"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/notes",
+          "resourceName": "notes",
+          "resourceId": "blb4ta",
+          "restMethod": "GET",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 1,
+          "stageName": "dev",
+          "stageDeploymentId": "dibpkc",
+          "mode": 1
+        }
+      },
+      "apigusEast1TestAPIMyLambdaget": {
+        "name": "apigusEast1TestAPIMyLambdaget",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
+          "endpointType": "EDGE",
+          "rootResourceId": "h2lelj6j7k",
+          "existingResources": {
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/MyLambda",
+          "resourceName": "MyLambda",
+          "resourceId": "98nqbj",
+          "restMethod": "GET",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 1,
+          "stageName": "test",
+          "stageDeploymentId": "ayve7j",
+          "mode": 1
+        }
+      },
+      "ddbpytable": {
+        "name": "ddbpytable",
+        "type": "DynamoDB",
+        "config": {
+          "mode": 1,
+          "operation": "query",
+          "table": {
+            "arn": "arn:aws:dynamodb:us-east-1:318300609668:table/py_table",
+            "name": "py_table",
+            "partitionKey": "id",
+            "partitionKeyType": "S",
+            "hasSortKey": false,
+            "sortKey": "",
+            "sortKeyType": "S",
+            "mode": 1,
+            "streamArn": "arn:aws:dynamodb:us-east-1:318300609668:table/py_table/stream/2019-04-04T08:58:24.601"
+          },
+          "parameters": {
+            "Key": {},
+            "Item": {},
+            "ExpressionAttributeValues": {}
+          },
+          "triggerParams": {},
+          "validator": {
+            "validatableFields": {},
+            "validity": true
+          },
+          "valid": true
+        }
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -76,7 +165,15 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "javascript",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
     }
   },
   "PROJECT_META": {
@@ -86,7 +183,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1554710933969
+    "lastSave": 1554714106910
   },
   "VCS_STATE": {
     "provider": "GitHub",
