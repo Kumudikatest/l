@@ -1,152 +1,45 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "b4b6095e-d831-4646-a08c-c37575d8ca39": {
-        "id": "b4b6095e-d831-4646-a08c-c37575d8ca39",
+      "aacc2d9d-fc91-4c0c-9cde-50bcffbe8427": {
+        "id": "aacc2d9d-fc91-4c0c-9cde-50bcffbe8427",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "64b298d2-8b8d-4263-82e6-2e8e63d82220"
+          "c369283f-bdf7-4723-aa98-4cc4e92de0e9"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "5532fa41-4096-46f7-8a4a-87ed45e46bbb": {
-        "id": "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
-        "parent": "64b298d2-8b8d-4263-82e6-2e8e63d82220",
+      "c369283f-bdf7-4723-aa98-4cc4e92de0e9": {
+        "id": "c369283f-bdf7-4723-aa98-4cc4e92de0e9",
+        "parent": "aacc2d9d-fc91-4c0c-9cde-50bcffbe8427",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "l/sub/lambda.js",
-        "code": "",
+        "filePath": "l/lambda.js",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "config": {
-          "runtime": "nodejs8.10",
+          "runtime": "nodejs6.10",
           "handler": "handler",
           "timeout": 60,
           "memory": 128,
           "layers": []
         },
-        "triggers": [],
-        "testCases": {
-          "f2dcc988-ab0a-4507-977f-c7e3847355d4": {
-            "id": "f2dcc988-ab0a-4507-977f-c7e3847355d4",
-            "name": "Unnamed event",
-            "functionId": "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
-      },
-      "64b298d2-8b8d-4263-82e6-2e8e63d82220": {
-        "id": "64b298d2-8b8d-4263-82e6-2e8e63d82220",
-        "parent": "b4b6095e-d831-4646-a08c-c37575d8ca39",
-        "name": "sub",
-        "type": "DIRECTORY",
-        "isDirectory": true,
-        "children": [
-          "5532fa41-4096-46f7-8a4a-87ed45e46bbb"
-        ],
-        "isRemovable": true,
-        "filePath": "l/sub"
+        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "b4b6095e-d831-4646-a08c-c37575d8ca39",
+    "rootNode": "aacc2d9d-fc91-4c0c-9cde-50bcffbe8427",
     "openFiles": [
-      "5532fa41-4096-46f7-8a4a-87ed45e46bbb"
+      "c369283f-bdf7-4723-aa98-4cc4e92de0e9"
     ],
-    "currentFileId": "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
-    "resources": {
-      "apigusEast1addNotenotesget": {
-        "name": "apigusEast1addNotenotesget",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "addNote",
-          "apiId": "7hlarzyh5j",
-          "endpointType": "EDGE",
-          "rootResourceId": "cdrq2qazvd",
-          "existingResources": {
-            "/notes": "blb4ta",
-            "/": "cdrq2qazvd"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/notes",
-          "resourceName": "notes",
-          "resourceId": "blb4ta",
-          "restMethod": "GET",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "dev",
-          "stageDeploymentId": "dibpkc",
-          "mode": 1
-        }
-      },
-      "apigusEast1TestAPIMyLambdaget": {
-        "name": "apigusEast1TestAPIMyLambdaget",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "TestAPI",
-          "apiId": "0itznun7w3",
-          "endpointType": "EDGE",
-          "rootResourceId": "h2lelj6j7k",
-          "existingResources": {
-            "/MyLambda": "98nqbj",
-            "/": "h2lelj6j7k",
-            "/testtwospeciallambda": "q4szm3",
-            "/testtwospecialkumutest": "wey3lk"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/MyLambda",
-          "resourceName": "MyLambda",
-          "resourceId": "98nqbj",
-          "restMethod": "GET",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "test",
-          "stageDeploymentId": "ayve7j",
-          "mode": 1
-        }
-      },
-      "ddbpytable": {
-        "name": "ddbpytable",
-        "type": "DynamoDB",
-        "config": {
-          "mode": 1,
-          "operation": "query",
-          "table": {
-            "arn": "arn:aws:dynamodb:us-east-1:318300609668:table/py_table",
-            "name": "py_table",
-            "partitionKey": "id",
-            "partitionKeyType": "S",
-            "hasSortKey": false,
-            "sortKey": "",
-            "sortKeyType": "S",
-            "mode": 1,
-            "streamArn": "arn:aws:dynamodb:us-east-1:318300609668:table/py_table/stream/2019-04-04T08:58:24.601"
-          },
-          "parameters": {
-            "Key": {},
-            "Item": {},
-            "ExpressionAttributeValues": {}
-          },
-          "triggerParams": {},
-          "validator": {
-            "validatableFields": {},
-            "validity": true
-          },
-          "valid": true
-        }
-      }
-    },
+    "currentFileId": "c369283f-bdf7-4723-aa98-4cc4e92de0e9",
+    "resources": {},
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -162,15 +55,7 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {
-        "aws-sdk": {
-          "name": "aws-sdk",
-          "language": "javascript",
-          "version": "2.176.0",
-          "dev": true,
-          "notRemovable": false
-        }
-      }
+      "dependencies": {}
     }
   },
   "PROJECT_META": {
@@ -180,7 +65,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1554716882449
+    "lastSave": 1554717142983
   },
   "VCS_STATE": {
     "provider": "GitHub",
