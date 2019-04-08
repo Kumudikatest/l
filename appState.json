@@ -8,7 +8,8 @@
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "5532fa41-4096-46f7-8a4a-87ed45e46bbb"
+          "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
+          "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7"
         ],
         "isRemovable": false,
         "filePath": "l"
@@ -31,14 +32,34 @@
           "layers": []
         },
         "triggers": []
+      },
+      "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7": {
+        "id": "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7",
+        "parent": "b4b6095e-d831-4646-a08c-c37575d8ca39",
+        "name": "new.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "l/new.js",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "config": {
+          "runtime": "nodejs6.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
       }
     },
     "deletedFiles": [],
     "rootNode": "b4b6095e-d831-4646-a08c-c37575d8ca39",
     "openFiles": [
-      "5532fa41-4096-46f7-8a4a-87ed45e46bbb"
+      "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
+      "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7"
     ],
-    "currentFileId": "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
+    "currentFileId": "c32d2cb9-e942-4e3c-9399-4e10eae7a9d7",
     "resources": {},
     "customTemplate": {
       "dialect": null,
@@ -65,7 +86,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1554708016613
+    "lastSave": 1554710933969
   },
   "VCS_STATE": {
     "provider": "GitHub",
