@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/sub/lambda.js",
-        "code": "let AWS = require('aws-sdk')\nconst ddb = new AWS.DynamoDB.DocumentClient();\nddb.query({\n    TableName: 'py_table'\n}).promise()\n    .then((data) => {\n        //your logic goes here\n        console.log(data);\n    })\n    .catch((err) => {\n        //handle error\n    });\n",
+        "code": "",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -53,10 +53,7 @@
         "filePath": "l/sub"
       }
     },
-    "deletedFiles": [
-      "l/lambda.js",
-      "l/new.js"
-    ],
+    "deletedFiles": [],
     "rootNode": "b4b6095e-d831-4646-a08c-c37575d8ca39",
     "openFiles": [
       "5532fa41-4096-46f7-8a4a-87ed45e46bbb"
@@ -183,7 +180,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1554714106910
+    "lastSave": 1554716882449
   },
   "VCS_STATE": {
     "provider": "GitHub",
