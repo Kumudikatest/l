@@ -24,7 +24,7 @@
         "filePath": "l/lambda.js",
         "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "config": {
-          "runtime": "nodejs6.10",
+          "runtime": "nodejs8.10",
           "handler": "handler",
           "timeout": 60,
           "memory": 128,
@@ -33,9 +33,7 @@
         "triggers": []
       }
     },
-    "deletedFiles": [
-      "l/sub"
-    ],
+    "deletedFiles": [],
     "rootNode": "aacc2d9d-fc91-4c0c-9cde-50bcffbe8427",
     "openFiles": [
       "c369283f-bdf7-4723-aa98-4cc4e92de0e9"
@@ -67,7 +65,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1554717672978
+    "lastSave": 1554717724915
   },
   "VCS_STATE": {
     "provider": "GitHub",
