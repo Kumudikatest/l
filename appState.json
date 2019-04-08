@@ -1,21 +1,21 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "fbf7def4-3c0f-4b04-a9e6-54be96700f7c": {
-        "id": "fbf7def4-3c0f-4b04-a9e6-54be96700f7c",
+      "b4b6095e-d831-4646-a08c-c37575d8ca39": {
+        "id": "b4b6095e-d831-4646-a08c-c37575d8ca39",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "a3af4091-9272-400a-8173-0bbb7ae281c8"
+          "5532fa41-4096-46f7-8a4a-87ed45e46bbb"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "a3af4091-9272-400a-8173-0bbb7ae281c8": {
-        "id": "a3af4091-9272-400a-8173-0bbb7ae281c8",
-        "parent": "fbf7def4-3c0f-4b04-a9e6-54be96700f7c",
+      "5532fa41-4096-46f7-8a4a-87ed45e46bbb": {
+        "id": "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
+        "parent": "b4b6095e-d831-4646-a08c-c37575d8ca39",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
@@ -30,41 +30,16 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": [
-          {
-            "resourceName": "apigusEast2OhioNewtestpost",
-            "config": {}
-          }
-        ]
+        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "fbf7def4-3c0f-4b04-a9e6-54be96700f7c",
+    "rootNode": "b4b6095e-d831-4646-a08c-c37575d8ca39",
     "openFiles": [
-      "a3af4091-9272-400a-8173-0bbb7ae281c8"
+      "5532fa41-4096-46f7-8a4a-87ed45e46bbb"
     ],
-    "currentFileId": "a3af4091-9272-400a-8173-0bbb7ae281c8",
-    "resources": {
-      "apigusEast2OhioNewtestpost": {
-        "name": "apigusEast2OhioNewtestpost",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-2",
-          "apiMode": 0,
-          "apiName": "OhioNew",
-          "endpointType": "EDGE",
-          "resourceMode": 0,
-          "resourceName": "test",
-          "resourcePath": "/test",
-          "restMethod": "POST",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 0,
-          "stageName": "test",
-          "mode": 0
-        }
-      }
-    },
+    "currentFileId": "5532fa41-4096-46f7-8a4a-87ed45e46bbb",
+    "resources": {},
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -87,10 +62,10 @@
     "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
-    "projectRegion": "us-east-2",
+    "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1554366626597
+    "lastSave": 1554708016613
   },
   "VCS_STATE": {
     "provider": "GitHub",
