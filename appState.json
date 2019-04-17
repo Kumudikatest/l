@@ -36,16 +36,16 @@
       "ef0b8fed-35f6-4605-9b4a-991b14a0bb80": {
         "id": "ef0b8fed-35f6-4605-9b4a-991b14a0bb80",
         "parent": "fc71ec50-837e-4e34-a692-e1f909d228f2",
-        "name": "t",
+        "name": " ",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [],
         "isRemovable": true,
-        "filePath": "l/t"
+        "filePath": "l/ "
       }
     },
     "deletedFiles": [
-      "l/Test"
+      "l/t"
     ],
     "rootNode": "fc71ec50-837e-4e34-a692-e1f909d228f2",
     "openFiles": [
@@ -78,7 +78,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1555495044653
+    "lastSave": 1555495093755
   },
   "VCS_STATE": {
     "provider": "GitHub",
