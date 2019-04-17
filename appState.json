@@ -8,7 +8,6 @@
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "f6ce8333-ad55-4022-8d39-10672a479b2b",
           "f5dae334-5edc-4191-aa54-2e47b6137c4c"
         ],
         "isRemovable": false,
@@ -16,13 +15,13 @@
       },
       "f6ce8333-ad55-4022-8d39-10672a479b2b": {
         "id": "f6ce8333-ad55-4022-8d39-10672a479b2b",
-        "parent": "e31f8a8e-bdf1-4472-9db9-e4ce8ebcaaef",
+        "parent": "f5dae334-5edc-4191-aa54-2e47b6137c4c",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "l/lambda.js",
+        "filePath": "l/newdir/lambda.js",
         "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
@@ -39,12 +38,16 @@
         "name": "newdir",
         "type": "DIRECTORY",
         "isDirectory": true,
-        "children": [],
+        "children": [
+          "f6ce8333-ad55-4022-8d39-10672a479b2b"
+        ],
         "isRemovable": true,
         "filePath": "l/newdir"
       }
     },
-    "deletedFiles": [],
+    "deletedFiles": [
+      "l/lambda.js"
+    ],
     "rootNode": "e31f8a8e-bdf1-4472-9db9-e4ce8ebcaaef",
     "openFiles": [
       "f6ce8333-ad55-4022-8d39-10672a479b2b"
@@ -76,7 +79,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1555489140851
+    "lastSave": 1555489174080
   },
   "VCS_STATE": {
     "provider": "GitHub",
