@@ -1,21 +1,21 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "37514535-84ae-4f72-aa57-47f5bf08f873": {
-        "id": "37514535-84ae-4f72-aa57-47f5bf08f873",
+      "eee005cd-7781-4503-8b53-88eba2a43d65": {
+        "id": "eee005cd-7781-4503-8b53-88eba2a43d65",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "e1f3d097-98c2-4baf-af33-3fa82417010f"
+          "e45d3992-3478-4888-a77e-cc8ae26bb13c"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "e1f3d097-98c2-4baf-af33-3fa82417010f": {
-        "id": "e1f3d097-98c2-4baf-af33-3fa82417010f",
-        "parent": "37514535-84ae-4f72-aa57-47f5bf08f873",
+      "e45d3992-3478-4888-a77e-cc8ae26bb13c": {
+        "id": "e45d3992-3478-4888-a77e-cc8ae26bb13c",
+        "parent": "eee005cd-7781-4503-8b53-88eba2a43d65",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
@@ -32,21 +32,21 @@
         },
         "triggers": [
           {
-            "resourceName": "apigusEast1TestAPIany",
+            "resourceName": "apigusEast1TestAPIMyLambdaget",
             "config": {}
           }
         ]
       }
     },
     "deletedFiles": [],
-    "rootNode": "37514535-84ae-4f72-aa57-47f5bf08f873",
+    "rootNode": "eee005cd-7781-4503-8b53-88eba2a43d65",
     "openFiles": [
-      "e1f3d097-98c2-4baf-af33-3fa82417010f"
+      "e45d3992-3478-4888-a77e-cc8ae26bb13c"
     ],
-    "currentFileId": "e1f3d097-98c2-4baf-af33-3fa82417010f",
+    "currentFileId": "e45d3992-3478-4888-a77e-cc8ae26bb13c",
     "resources": {
-      "apigusEast1TestAPIany": {
-        "name": "apigusEast1TestAPIany",
+      "apigusEast1TestAPIMyLambdaget": {
+        "name": "apigusEast1TestAPIMyLambdaget",
         "type": "API_GATEWAY",
         "config": {
           "selectedRegion": "us-east-1",
@@ -62,15 +62,15 @@
             "/testtwospecialkumutest": "wey3lk"
           },
           "resourceMode": 1,
-          "resourcePath": "/",
-          "resourceName": "",
-          "resourceId": "h2lelj6j7k",
-          "restMethod": "ANY",
+          "resourcePath": "/MyLambda",
+          "resourceName": "MyLambda",
+          "resourceId": "98nqbj",
+          "restMethod": "GET",
           "proxyIntegration": false,
           "enableCORS": false,
           "stageMode": 1,
-          "stageName": "prod1",
-          "stageDeploymentId": "ayagec",
+          "stageName": "socks",
+          "stageDeploymentId": "03eija",
           "mode": 1
         }
       }
@@ -100,7 +100,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1555581191764
+    "lastSave": 1555581798197
   },
   "VCS_STATE": {
     "provider": "GitHub",
