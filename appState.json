@@ -1,27 +1,27 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "af80345a-c32d-4703-80af-f52ae60c6ec1": {
-        "id": "af80345a-c32d-4703-80af-f52ae60c6ec1",
+      "43293a55-76fb-47b8-9e25-be5dcc3c1d10": {
+        "id": "43293a55-76fb-47b8-9e25-be5dcc3c1d10",
         "parent": null,
-        "name": "ll",
+        "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "fe62725c-a3fa-4352-af54-633d219620e0"
+          "bb429132-5439-48c5-aa7f-1c4e812ba4d5"
         ],
         "isRemovable": false,
-        "filePath": "ll"
+        "filePath": "l"
       },
-      "fe62725c-a3fa-4352-af54-633d219620e0": {
-        "id": "fe62725c-a3fa-4352-af54-633d219620e0",
-        "parent": "af80345a-c32d-4703-80af-f52ae60c6ec1",
+      "bb429132-5439-48c5-aa7f-1c4e812ba4d5": {
+        "id": "bb429132-5439-48c5-aa7f-1c4e812ba4d5",
+        "parent": "43293a55-76fb-47b8-9e25-be5dcc3c1d10",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "ll/lambda.js",
+        "filePath": "l/lambda.js",
         "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
@@ -30,16 +30,71 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [
+          {
+            "resourceName": "apigusEast1TestAPIMyLambdaget",
+            "config": {}
+          }
+        ],
+        "customSecurityPolicy": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Deny",
+              "Resource": "*",
+              "Action": [
+                "cloudformation:UpdateStack"
+              ]
+            }
+          ]
+        },
+        "testCases": {
+          "45279df4-5e28-4c97-a8eb-ee88326ac235": {
+            "id": "45279df4-5e28-4c97-a8eb-ee88326ac235",
+            "name": "Unnamed event",
+            "functionId": "bb429132-5439-48c5-aa7f-1c4e812ba4d5",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
+        }
       }
     },
     "deletedFiles": [],
-    "rootNode": "af80345a-c32d-4703-80af-f52ae60c6ec1",
+    "rootNode": "43293a55-76fb-47b8-9e25-be5dcc3c1d10",
     "openFiles": [
-      "fe62725c-a3fa-4352-af54-633d219620e0"
+      "bb429132-5439-48c5-aa7f-1c4e812ba4d5"
     ],
-    "currentFileId": "fe62725c-a3fa-4352-af54-633d219620e0",
-    "resources": {},
+    "currentFileId": "bb429132-5439-48c5-aa7f-1c4e812ba4d5",
+    "resources": {
+      "apigusEast1TestAPIMyLambdaget": {
+        "name": "apigusEast1TestAPIMyLambdaget",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
+          "endpointType": "EDGE",
+          "rootResourceId": "h2lelj6j7k",
+          "existingResources": {
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/MyLambda",
+          "resourceName": "MyLambda",
+          "resourceId": "98nqbj",
+          "restMethod": "GET",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 1,
+          "stageName": "Test2",
+          "stageDeploymentId": "ebapr5",
+          "mode": 1
+        }
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -59,18 +114,18 @@
     }
   },
   "PROJECT_META": {
-    "projectName": "ll",
+    "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1555564724693
+    "lastSave": 1555580609067
   },
   "VCS_STATE": {
     "provider": "GitHub",
     "repo": {
-      "name": "ll",
+      "name": "l",
       "url": "https://github.com/Kumudikatest/l"
     }
   }
