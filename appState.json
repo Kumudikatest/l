@@ -32,7 +32,7 @@
         },
         "triggers": [
           {
-            "resourceName": "apigusEast1TestAPIany",
+            "resourceName": "apigusEast1TestAPIMyLambdaoptions",
             "config": {}
           }
         ]
@@ -69,13 +69,13 @@
           "proxyIntegration": false,
           "enableCORS": false,
           "stageMode": 1,
-          "stageName": "socks",
-          "stageDeploymentId": "03eija",
+          "stageName": "test",
+          "stageDeploymentId": "ayve7j",
           "mode": 1
         }
       },
-      "apigusEast1TestAPIMyLambdaany": {
-        "name": "apigusEast1TestAPIMyLambdaany",
+      "apigusEast1TestAPIMyLambdaoptions": {
+        "name": "apigusEast1TestAPIMyLambdaoptions",
         "type": "API_GATEWAY",
         "config": {
           "selectedRegion": "us-east-1",
@@ -94,70 +94,12 @@
           "resourcePath": "/MyLambda",
           "resourceName": "MyLambda",
           "resourceId": "98nqbj",
-          "restMethod": "ANY",
+          "restMethod": "OPTIONS",
           "proxyIntegration": false,
           "enableCORS": false,
           "stageMode": 1,
-          "stageName": "socks",
-          "stageDeploymentId": "03eija",
-          "mode": 1
-        }
-      },
-      "apigusEast1TestAPIget": {
-        "name": "apigusEast1TestAPIget",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "TestAPI",
-          "apiId": "0itznun7w3",
-          "endpointType": "EDGE",
-          "rootResourceId": "h2lelj6j7k",
-          "existingResources": {
-            "/MyLambda": "98nqbj",
-            "/": "h2lelj6j7k",
-            "/testtwospeciallambda": "q4szm3",
-            "/testtwospecialkumutest": "wey3lk"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/",
-          "resourceName": "",
-          "resourceId": "h2lelj6j7k",
-          "restMethod": "GET",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "socks",
-          "stageDeploymentId": "03eija",
-          "mode": 1
-        }
-      },
-      "apigusEast1TestAPIany": {
-        "name": "apigusEast1TestAPIany",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "TestAPI",
-          "apiId": "0itznun7w3",
-          "endpointType": "EDGE",
-          "rootResourceId": "h2lelj6j7k",
-          "existingResources": {
-            "/MyLambda": "98nqbj",
-            "/": "h2lelj6j7k",
-            "/testtwospeciallambda": "q4szm3",
-            "/testtwospecialkumutest": "wey3lk"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/",
-          "resourceName": "",
-          "resourceId": "h2lelj6j7k",
-          "restMethod": "ANY",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "socks",
-          "stageDeploymentId": "03eija",
+          "stageName": "test",
+          "stageDeploymentId": "ayve7j",
           "mode": 1
         }
       }
@@ -187,7 +129,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1555581904480
+    "lastSave": 1555583992021
   },
   "VCS_STATE": {
     "provider": "GitHub",
