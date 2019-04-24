@@ -1,9 +1,8 @@
 let AWS = require('aws-sdk')
 const ddb = new AWS.DynamoDB.DocumentClient();
 
-exports.handler = function (event, context, callback) {
     ddb.scan({
-        TableName: 'ttt'
+        TableName: 'py_table'
     }).promise()
         .then((data) => {
             //your logic goes here
@@ -13,4 +12,3 @@ exports.handler = function (event, context, callback) {
         });
 
     callback(null, { "message": "Successfully executed" });
-}

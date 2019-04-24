@@ -1,28 +1,28 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "8a303814-e627-43fa-809a-6513bbf66423": {
-        "id": "8a303814-e627-43fa-809a-6513bbf66423",
+      "95a55abb-add2-49b1-917b-3cbb51c111bb": {
+        "id": "95a55abb-add2-49b1-917b-3cbb51c111bb",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "56b73b18-781b-46df-b5a1-941d22e9a237"
+          "cb6d7afa-43f8-4f31-bb57-22a389b7a6fb"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "56b73b18-781b-46df-b5a1-941d22e9a237": {
-        "id": "56b73b18-781b-46df-b5a1-941d22e9a237",
-        "parent": "8a303814-e627-43fa-809a-6513bbf66423",
+      "cb6d7afa-43f8-4f31-bb57-22a389b7a6fb": {
+        "id": "cb6d7afa-43f8-4f31-bb57-22a389b7a6fb",
+        "parent": "95a55abb-add2-49b1-917b-3cbb51c111bb",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let AWS = require('aws-sdk')\nconst ddb = new AWS.DynamoDB.DocumentClient();\n\nexports.handler = function (event, context, callback) {\n    ddb.scan({\n        TableName: 'ttt'\n    }).promise()\n        .then((data) => {\n            //your logic goes here\n        })\n        .catch((err) => {\n            //handle error\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk')\nconst ddb = new AWS.DynamoDB.DocumentClient();\n\n    ddb.scan({\n        TableName: 'py_table'\n    }).promise()\n        .then((data) => {\n            //your logic goes here\n        })\n        .catch((err) => {\n            //handle error\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -30,39 +30,289 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": [],
-        "testCases": {
-          "efd9ce9f-fb6b-452d-8fe2-c84f6f8e4dbe": {
-            "id": "efd9ce9f-fb6b-452d-8fe2-c84f6f8e4dbe",
-            "name": "Unnamed event",
-            "functionId": "56b73b18-781b-46df-b5a1-941d22e9a237",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
+        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "8a303814-e627-43fa-809a-6513bbf66423",
+    "rootNode": "95a55abb-add2-49b1-917b-3cbb51c111bb",
     "openFiles": [
-      "56b73b18-781b-46df-b5a1-941d22e9a237"
+      "cb6d7afa-43f8-4f31-bb57-22a389b7a6fb"
     ],
-    "currentFileId": "56b73b18-781b-46df-b5a1-941d22e9a237",
+    "currentFileId": "cb6d7afa-43f8-4f31-bb57-22a389b7a6fb",
     "resources": {
-      "ddbttt": {
-        "name": "ddbttt",
+      "cognitotest": {
+        "name": "cognitotest",
+        "type": "CognitoIdentityServiceProvider",
+        "config": {
+          "mode": 1,
+          "name": "test",
+          "arn": "arn:aws:cognito-idp:us-east-1:318300609668:userpool/us-east-1_D10y3fy0o",
+          "userPool": {
+            "Id": "us-east-1_D10y3fy0o",
+            "Name": "test",
+            "LambdaConfig": {},
+            "Policies": {
+              "PasswordPolicy": {
+                "MinimumLength": 8,
+                "RequireUppercase": true,
+                "RequireLowercase": true,
+                "RequireNumbers": true,
+                "RequireSymbols": true
+              }
+            },
+            "SmsVerificationMessage": "Your verification code is {####}. ",
+            "EmailVerificationMessage": "Your verification code is {####}. ",
+            "EmailVerificationSubject": "Your verification code",
+            "VerificationMessageTemplate": {
+              "SmsMessage": "Your verification code is {####}. ",
+              "EmailMessage": "Your verification code is {####}. ",
+              "EmailSubject": "Your verification code",
+              "DefaultEmailOption": "CONFIRM_WITH_CODE"
+            },
+            "SmsAuthenticationMessage": "Your authentication code is {####}. ",
+            "MfaConfiguration": "OFF",
+            "EmailConfiguration": {},
+            "UserPoolTags": {},
+            "AdminCreateUserConfig": {
+              "AllowAdminCreateUserOnly": false,
+              "UnusedAccountValidityDays": 7,
+              "InviteMessageTemplate": {
+                "SMSMessage": "Your username is {username} and temporary password is {####}. ",
+                "EmailMessage": "Your username is {username} and temporary password is {####}. ",
+                "EmailSubject": "Your temporary password"
+              }
+            },
+            "SchemaAttributes": [
+              {
+                "Name": "sub",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": false,
+                "Required": true,
+                "StringAttributeConstraints": {
+                  "MinLength": "1",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "given_name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "family_name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "middle_name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "nickname",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "preferred_username",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "profile",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "picture",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "website",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "email",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": true,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "email_verified",
+                "AttributeDataType": "Boolean",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false
+              },
+              {
+                "Name": "gender",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "birthdate",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "10",
+                  "MaxLength": "10"
+                }
+              },
+              {
+                "Name": "zoneinfo",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "locale",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "phone_number",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "phone_number_verified",
+                "AttributeDataType": "Boolean",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false
+              },
+              {
+                "Name": "address",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "updated_at",
+                "AttributeDataType": "Number",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "NumberAttributeConstraints": {
+                  "MinValue": "0"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "ddbpytable": {
+        "name": "ddbpytable",
         "type": "DynamoDB",
         "config": {
-          "mode": 0,
+          "mode": 1,
           "operation": "scan",
           "table": {
-            "arn": "",
-            "name": "ttt",
-            "partitionKey": "ID",
-            "partitionKeyType": "N",
+            "arn": "arn:aws:dynamodb:us-east-1:318300609668:table/py_table",
+            "name": "py_table",
+            "partitionKey": "id",
+            "partitionKeyType": "S",
             "hasSortKey": false,
             "sortKey": "",
             "sortKeyType": "S",
-            "mode": 0
+            "mode": 1
           },
           "parameters": {
             "Key": {},
@@ -111,7 +361,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1556095637090
+    "lastSave": 1556099156290
   },
   "VCS_STATE": {
     "provider": "GitHub",
