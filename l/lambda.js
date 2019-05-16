@@ -1,14 +1,26 @@
-let AWS = require('aws-sdk')
-const ddb = new AWS.DynamoDB.DocumentClient();
+let google = require('googleapis').google;
+let _auth = require('./Authorizer');
+const datastore = google.datastore('v1');
 
-    ddb.scan({
-        TableName: 'py_table'
-    }).promise()
-        .then((data) => {
-            //your logic goes here
-        })
-        .catch((err) => {
-            //handle error
+exports.handler = function (event, context, callback) {
+    datastore.projects.beginTransaction({
+        projectId: process.env.GCP_PROJECT,
+        resource: {
+            transactionOptions: {
+                readWrite: {}
+            }
+        }
+    }).then(response => {
+        console.log(response.data);           // successful response
+        /*
+        response.data = {
+            "transaction": "<transaction ID>"
+        }
+        */
+    })
+        .catch(err => {
+            console.log(err, err.stack); // an error occurred
         });
 
     callback(null, { "message": "Successfully executed" });
+}
