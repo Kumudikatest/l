@@ -1,29 +1,28 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "ceb69aec-fcea-4897-ad6d-1adf05f68fd2": {
-        "id": "ceb69aec-fcea-4897-ad6d-1adf05f68fd2",
+      "495306ae-da34-4a4e-84d4-1575a0e71d68": {
+        "id": "495306ae-da34-4a4e-84d4-1575a0e71d68",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "cd1047c0-251b-4ef9-b74f-74b9afd58db5",
-          "01180cd5-37a5-47f0-9450-b267bad79bfa"
+          "bd50b2d9-64d9-4ee6-a71b-18871be972ba"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "cd1047c0-251b-4ef9-b74f-74b9afd58db5": {
-        "id": "cd1047c0-251b-4ef9-b74f-74b9afd58db5",
-        "parent": "ceb69aec-fcea-4897-ad6d-1adf05f68fd2",
+      "bd50b2d9-64d9-4ee6-a71b-18871be972ba": {
+        "id": "bd50b2d9-64d9-4ee6-a71b-18871be972ba",
+        "parent": "495306ae-da34-4a4e-84d4-1575a0e71d68",
         "name": "lambda.js",
         "type": "LAMBDA_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst datastore = google.datastore('v1');\n\nexports.handler = function (event, context, callback) {\n    datastore.projects.beginTransaction({\n        projectId: process.env.GCP_PROJECT,\n        resource: {\n            transactionOptions: {\n                readWrite: {}\n            }\n        }\n    }).then(response => {\n        console.log(response.data);           // successful response\n        /*\n        response.data = {\n            \"transaction\": \"<transaction ID>\"\n        }\n        */\n    })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
@@ -31,35 +30,24 @@
           "timeout": 60,
           "memory": 128,
           "layers": []
+        },
+        "testCases": {
+          "c782f1a1-f3a9-488a-860d-64fcbed85987": {
+            "id": "c782f1a1-f3a9-488a-860d-64fcbed85987",
+            "name": "Unnamed event",
+            "functionId": "bd50b2d9-64d9-4ee6-a71b-18871be972ba",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
         }
-      },
-      "01180cd5-37a5-47f0-9450-b267bad79bfa": {
-        "id": "01180cd5-37a5-47f0-9450-b267bad79bfa",
-        "parent": "ceb69aec-fcea-4897-ad6d-1adf05f68fd2",
-        "name": "Authorizer.js",
-        "type": "JS_FILE",
-        "isDirectory": false,
-        "children": [],
-        "isRemovable": true,
-        "filePath": "l/Authorizer.js",
-        "code": "const google = require(\"googleapis\").google;\n\nconst key = JSON.parse(process.env.GCP_SERVICE_ACCOUNT_KEY);\nconst jwtClient = new google.auth.JWT({\n    email: key.client_email,\n    key: key.private_key,\n    scopes: [\"https://www.googleapis.com/auth/cloud-platform\"]\n});\n\ngoogle.options({auth: jwtClient, project: process.env.GCP_PROJECT});",
-        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "ceb69aec-fcea-4897-ad6d-1adf05f68fd2",
+    "rootNode": "495306ae-da34-4a4e-84d4-1575a0e71d68",
     "openFiles": [
-      "cd1047c0-251b-4ef9-b74f-74b9afd58db5"
+      "bd50b2d9-64d9-4ee6-a71b-18871be972ba"
     ],
-    "currentFileId": "cd1047c0-251b-4ef9-b74f-74b9afd58db5",
-    "resources": {
-      "datastore": {
-        "name": "datastore",
-        "type": "datastore",
-        "config": {},
-        "globallyEditable": false
-      }
-    },
+    "currentFileId": "bd50b2d9-64d9-4ee6-a71b-18871be972ba",
+    "resources": {},
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -72,43 +60,20 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
-      },
-      {
-        "lambdaId": "all",
-        "varKey": "GCP_SERVICE_ACCOUNT_KEY",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": false
-      },
-      {
-        "lambdaId": "all",
-        "varKey": "GCP_PROJECT",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": false
       }
     ],
     "packageJSON": {
-      "dependencies": {
-        "googleapis": {
-          "name": "googleapis",
-          "version": "29.0.0",
-          "dev": false,
-          "notRemovable": false
-        }
-      }
+      "dependencies": {}
     }
   },
   "PROJECT_META": {
     "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
-    "projectRegion": "us-east-1",
+    "projectRegion": "eu-central-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1558002583755
+    "lastSave": 1558006722939
   },
   "VCS_STATE": {
     "provider": "GitHub",
