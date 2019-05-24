@@ -1,22 +1,22 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "8146a622-d108-4ced-8fc2-82761f2581fa": {
-        "id": "8146a622-d108-4ced-8fc2-82761f2581fa",
+      "1a50fd3d-911d-4c45-8f96-2a5fe1670e88": {
+        "id": "1a50fd3d-911d-4c45-8f96-2a5fe1670e88",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "6d1368c6-f18d-43d4-8fce-4a6962109ca0",
-          "f7fdb1d7-fa13-411d-bd80-2ef495a3c814"
+          "401287a3-339e-491d-989b-ff46c2212301",
+          "4708bdf1-792f-4c55-acd0-2ec5dc48ca4b"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "6d1368c6-f18d-43d4-8fce-4a6962109ca0": {
-        "id": "6d1368c6-f18d-43d4-8fce-4a6962109ca0",
-        "parent": "8146a622-d108-4ced-8fc2-82761f2581fa",
+      "401287a3-339e-491d-989b-ff46c2212301": {
+        "id": "401287a3-339e-491d-989b-ff46c2212301",
+        "parent": "1a50fd3d-911d-4c45-8f96-2a5fe1670e88",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
@@ -33,9 +33,9 @@
         },
         "triggers": []
       },
-      "f7fdb1d7-fa13-411d-bd80-2ef495a3c814": {
-        "id": "f7fdb1d7-fa13-411d-bd80-2ef495a3c814",
-        "parent": "8146a622-d108-4ced-8fc2-82761f2581fa",
+      "4708bdf1-792f-4c55-acd0-2ec5dc48ca4b": {
+        "id": "4708bdf1-792f-4c55-acd0-2ec5dc48ca4b",
+        "parent": "1a50fd3d-911d-4c45-8f96-2a5fe1670e88",
         "name": "new.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
@@ -54,12 +54,12 @@
       }
     },
     "deletedFiles": [],
-    "rootNode": "8146a622-d108-4ced-8fc2-82761f2581fa",
+    "rootNode": "1a50fd3d-911d-4c45-8f96-2a5fe1670e88",
     "openFiles": [
-      "6d1368c6-f18d-43d4-8fce-4a6962109ca0",
-      "f7fdb1d7-fa13-411d-bd80-2ef495a3c814"
+      "401287a3-339e-491d-989b-ff46c2212301",
+      "4708bdf1-792f-4c55-acd0-2ec5dc48ca4b"
     ],
-    "currentFileId": "6d1368c6-f18d-43d4-8fce-4a6962109ca0",
+    "currentFileId": "4708bdf1-792f-4c55-acd0-2ec5dc48ca4b",
     "resources": {},
     "customTemplate": {
       "dialect": null,
@@ -86,7 +86,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1558689810422
+    "lastSave": 1558695114536
   },
   "VCS_STATE": {
     "provider": "GitHub",
