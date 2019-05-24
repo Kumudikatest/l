@@ -1,21 +1,22 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "3840da42-7233-4311-bfaf-f65019411a78": {
-        "id": "3840da42-7233-4311-bfaf-f65019411a78",
+      "8146a622-d108-4ced-8fc2-82761f2581fa": {
+        "id": "8146a622-d108-4ced-8fc2-82761f2581fa",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "0015e297-5c8f-44cb-afe1-287d0246cee1"
+          "6d1368c6-f18d-43d4-8fce-4a6962109ca0",
+          "f7fdb1d7-fa13-411d-bd80-2ef495a3c814"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "0015e297-5c8f-44cb-afe1-287d0246cee1": {
-        "id": "0015e297-5c8f-44cb-afe1-287d0246cee1",
-        "parent": "3840da42-7233-4311-bfaf-f65019411a78",
+      "6d1368c6-f18d-43d4-8fce-4a6962109ca0": {
+        "id": "6d1368c6-f18d-43d4-8fce-4a6962109ca0",
+        "parent": "8146a622-d108-4ced-8fc2-82761f2581fa",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
@@ -31,14 +32,34 @@
           "layers": []
         },
         "triggers": []
+      },
+      "f7fdb1d7-fa13-411d-bd80-2ef495a3c814": {
+        "id": "f7fdb1d7-fa13-411d-bd80-2ef495a3c814",
+        "parent": "8146a622-d108-4ced-8fc2-82761f2581fa",
+        "name": "new.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "l/new.js",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "config": {
+          "runtime": "nodejs6.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "3840da42-7233-4311-bfaf-f65019411a78",
+    "rootNode": "8146a622-d108-4ced-8fc2-82761f2581fa",
     "openFiles": [
-      "0015e297-5c8f-44cb-afe1-287d0246cee1"
+      "6d1368c6-f18d-43d4-8fce-4a6962109ca0",
+      "f7fdb1d7-fa13-411d-bd80-2ef495a3c814"
     ],
-    "currentFileId": "0015e297-5c8f-44cb-afe1-287d0246cee1",
+    "currentFileId": "6d1368c6-f18d-43d4-8fce-4a6962109ca0",
     "resources": {},
     "customTemplate": {
       "dialect": null,
@@ -65,7 +86,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1558612352989
+    "lastSave": 1558689810422
   },
   "VCS_STATE": {
     "provider": "GitHub",
