@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "exports.handler = function (event, context, callback) {\n   \n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let SL_TWITTER = require('slappforge-sdk-twitter');\nlet twitterClients = require('./TwitterClients');\nconst twitter = new SL_TWITTER.TwitterP(twitterClients);\n\nexports.handler = function (event, context, callback) {\n\n    twitter.postTweet({\n        \"status\": \"Test\",\n        \"clientName\": \"twClient\"\n    }).then(response => {\n        let data = response.data;\n    }).catch(err => {\n        console.log(err);\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -42,7 +42,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/TwitterClients.js",
-        "code": "let SL_TWITTER = require('slappforge-sdk-twitter');\nconst twitter = new SL_TWITTER.Twitter();\nmodule.exports = {\n\n};"
+        "code": "let SL_TWITTER = require('slappforge-sdk-twitter');\nconst twitter = new SL_TWITTER.Twitter();\nmodule.exports = {\n\n        'twClient': twitter.createClient({\n            consumer_key: process.env.TWITTER_twClient_consumerKey,\n            consumer_secret: process.env.TWITTER_twClient_consumerSecret,\n            access_token: process.env.TWITTER_twClient_accessToken,\n            access_token_secret: process.env.TWITTER_twClient_accessTokenSecret\n        }),\n};"
       }
     },
     "deletedFiles": [],
@@ -51,7 +51,15 @@
       "b452346b-6d45-4ff8-959f-dbad33f4167a"
     ],
     "currentFileId": "b452346b-6d45-4ff8-959f-dbad33f4167a",
-    "resources": {},
+    "resources": {
+      "twClient": {
+        "name": "twClient",
+        "type": "TwitterP",
+        "config": {
+          "name": "twClient"
+        }
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -64,6 +72,38 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "TWITTER_twClient_consumerKey",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "TWITTER_twClient_consumerSecret",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "TWITTER_twClient_accessToken",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "TWITTER_twClient_accessTokenSecret",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
       }
     ],
     "packageJSON": {
@@ -85,7 +125,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1558947243971
+    "lastSave": 1558949559568
   },
   "VCS_STATE": {
     "provider": "GitHub",
