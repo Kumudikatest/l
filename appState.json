@@ -42,7 +42,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/TwitterClients.js",
-        "code": "let SL_TWITTER = require('slappforge-sdk-twitter');\nconst twitter = new SL_TWITTER.Twitter();\nmodule.exports = {\n\n        'twClient': twitter.createClient({\n            consumer_key: process.env.TWITTER_twClient_consumerKey,\n            consumer_secret: process.env.TWITTER_twClient_consumerSecret,\n            access_token: process.env.TWITTER_twClient_accessToken,\n            access_token_secret: process.env.TWITTER_twClient_accessTokenSecret\n        }),\n};"
+        "code": "let SL_TWITTER = require('slappforge-sdk-twitter');\nconst twitter = new SL_TWITTER.Twitter();\nmodule.exports = {\n\n};"
       }
     },
     "deletedFiles": [],
@@ -51,15 +51,7 @@
       "b452346b-6d45-4ff8-959f-dbad33f4167a"
     ],
     "currentFileId": "b452346b-6d45-4ff8-959f-dbad33f4167a",
-    "resources": {
-      "twClient": {
-        "name": "twClient",
-        "type": "TwitterP",
-        "config": {
-          "name": "twClient"
-        }
-      }
-    },
+    "resources": {},
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -72,38 +64,6 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
-      },
-      {
-        "lambdaId": "all",
-        "varKey": "TWITTER_twClient_consumerKey",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": true
-      },
-      {
-        "lambdaId": "all",
-        "varKey": "TWITTER_twClient_consumerSecret",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": true
-      },
-      {
-        "lambdaId": "all",
-        "varKey": "TWITTER_twClient_accessToken",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": true
-      },
-      {
-        "lambdaId": "all",
-        "varKey": "TWITTER_twClient_accessTokenSecret",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": true
       }
     ],
     "packageJSON": {
@@ -125,7 +85,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1558947108039
+    "lastSave": 1558947141370
   },
   "VCS_STATE": {
     "provider": "GitHub",
