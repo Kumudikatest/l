@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let SL_TWITTER = require('slappforge-sdk-twitter');\nlet twitterClients = require('./TwitterClients');\nconst twitter = new SL_TWITTER.TwitterP(twitterClients);\n\nexports.handler = function (event, context, callback) {\n    \n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "exports.handler = function (event, context, callback) {\n    \n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -85,7 +85,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1558946735324
+    "lastSave": 1558946798995
   },
   "VCS_STATE": {
     "provider": "GitHub",
