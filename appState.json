@@ -1,29 +1,29 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "a049fc1b-6e01-4b69-99b8-d8d78cdee0da": {
-        "id": "a049fc1b-6e01-4b69-99b8-d8d78cdee0da",
+      "79abed08-e726-4009-b21f-2b5a01b86a0c": {
+        "id": "79abed08-e726-4009-b21f-2b5a01b86a0c",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "cdb8bebe-426f-459e-97c0-9b56687c7436",
-          "050ad940-d8f1-4d4d-bab0-d07a769c095b"
+          "b452346b-6d45-4ff8-959f-dbad33f4167a",
+          "a5b9a014-b407-47de-97c3-bd5dc39fc3dc"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "cdb8bebe-426f-459e-97c0-9b56687c7436": {
-        "id": "cdb8bebe-426f-459e-97c0-9b56687c7436",
-        "parent": "a049fc1b-6e01-4b69-99b8-d8d78cdee0da",
+      "b452346b-6d45-4ff8-959f-dbad33f4167a": {
+        "id": "b452346b-6d45-4ff8-959f-dbad33f4167a",
+        "parent": "79abed08-e726-4009-b21f-2b5a01b86a0c",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "exports.handler = function (event, context, callback) {\n    \n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let SL_TWITTER = require('slappforge-sdk-twitter');\nlet twitterClients = require('./TwitterClients');\nconst twitter = new SL_TWITTER.TwitterP(twitterClients);\n\nexports.handler = function (event, context, callback) {\n    twitter.postTweet({\n        \"status\": \"Test\",\n        \"clientName\": \"twClient\"\n    }).then(response => {\n        let data = response.data;\n    }).catch(err => {\n        console.log(err);\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -33,25 +33,33 @@
         },
         "triggers": []
       },
-      "050ad940-d8f1-4d4d-bab0-d07a769c095b": {
-        "id": "050ad940-d8f1-4d4d-bab0-d07a769c095b",
-        "parent": "a049fc1b-6e01-4b69-99b8-d8d78cdee0da",
+      "a5b9a014-b407-47de-97c3-bd5dc39fc3dc": {
+        "id": "a5b9a014-b407-47de-97c3-bd5dc39fc3dc",
+        "parent": "79abed08-e726-4009-b21f-2b5a01b86a0c",
         "name": "TwitterClients.js",
         "type": "JS_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/TwitterClients.js",
-        "code": "let SL_TWITTER = require('slappforge-sdk-twitter');\nconst twitter = new SL_TWITTER.Twitter();\nmodule.exports = {\n\n};"
+        "code": "let SL_TWITTER = require('slappforge-sdk-twitter');\nconst twitter = new SL_TWITTER.Twitter();\nmodule.exports = {\n\n        'twClient': twitter.createClient({\n            consumer_key: process.env.TWITTER_twClient_consumerKey,\n            consumer_secret: process.env.TWITTER_twClient_consumerSecret,\n            access_token: process.env.TWITTER_twClient_accessToken,\n            access_token_secret: process.env.TWITTER_twClient_accessTokenSecret\n        }),\n};"
       }
     },
     "deletedFiles": [],
-    "rootNode": "a049fc1b-6e01-4b69-99b8-d8d78cdee0da",
+    "rootNode": "79abed08-e726-4009-b21f-2b5a01b86a0c",
     "openFiles": [
-      "cdb8bebe-426f-459e-97c0-9b56687c7436"
+      "b452346b-6d45-4ff8-959f-dbad33f4167a"
     ],
-    "currentFileId": "cdb8bebe-426f-459e-97c0-9b56687c7436",
-    "resources": {},
+    "currentFileId": "b452346b-6d45-4ff8-959f-dbad33f4167a",
+    "resources": {
+      "twClient": {
+        "name": "twClient",
+        "type": "TwitterP",
+        "config": {
+          "name": "twClient"
+        }
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -64,6 +72,38 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "TWITTER_twClient_consumerKey",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "TWITTER_twClient_consumerSecret",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "TWITTER_twClient_accessToken",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "TWITTER_twClient_accessTokenSecret",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
       }
     ],
     "packageJSON": {
@@ -85,7 +125,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1558946798995
+    "lastSave": 1558946991495
   },
   "VCS_STATE": {
     "provider": "GitHub",
