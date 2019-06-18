@@ -39,17 +39,31 @@
         "name": "dir",
         "type": "DIRECTORY",
         "isDirectory": true,
-        "children": [],
+        "children": [
+          "7da3bd00-bbb1-47a2-b286-34c82f3afbd4"
+        ],
         "isRemovable": true,
         "filePath": "l/dir"
+      },
+      "7da3bd00-bbb1-47a2-b286-34c82f3afbd4": {
+        "id": "7da3bd00-bbb1-47a2-b286-34c82f3afbd4",
+        "parent": "aa981552-7b4a-4a4b-af92-5b41061a9735",
+        "name": "js.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "l/dir/js.js",
+        "code": ""
       }
     },
     "deletedFiles": [],
     "rootNode": "d6c29768-583e-45aa-829c-b7a5a327e0b1",
     "openFiles": [
-      "f611e642-1a32-4c75-981c-b1090a9253d8"
+      "f611e642-1a32-4c75-981c-b1090a9253d8",
+      "7da3bd00-bbb1-47a2-b286-34c82f3afbd4"
     ],
-    "currentFileId": "f611e642-1a32-4c75-981c-b1090a9253d8",
+    "currentFileId": "7da3bd00-bbb1-47a2-b286-34c82f3afbd4",
     "resources": {},
     "customTemplate": {
       "dialect": null,
@@ -76,7 +90,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1560851330009
+    "lastSave": 1560851526853
   },
   "VCS_STATE": {
     "provider": "GitHub",
