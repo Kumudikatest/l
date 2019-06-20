@@ -1,45 +1,80 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "169847b2-dcd0-463d-abe7-f64b993f8fe5": {
-        "id": "169847b2-dcd0-463d-abe7-f64b993f8fe5",
+      "09b99049-d03d-4521-97c2-39be5e6b4aed": {
+        "id": "09b99049-d03d-4521-97c2-39be5e6b4aed",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "1194452a-1892-44f0-9f23-4ae56e676970"
+          "5b693569-94b8-45cb-9ad0-afc25d6b36b0"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "1194452a-1892-44f0-9f23-4ae56e676970": {
-        "id": "1194452a-1892-44f0-9f23-4ae56e676970",
-        "parent": "169847b2-dcd0-463d-abe7-f64b993f8fe5",
+      "5b693569-94b8-45cb-9ad0-afc25d6b36b0": {
+        "id": "5b693569-94b8-45cb-9ad0-afc25d6b36b0",
+        "parent": "09b99049-d03d-4521-97c2-39be5e6b4aed",
         "name": "lambda.js",
-        "type": "JS_LAMBDA",
+        "type": "LAMBDA_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
         "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "triggers": [
+          {
+            "resourceName": "apigusEast1TestAPIany",
+            "config": {}
+          }
+        ],
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
           "timeout": 60,
           "memory": 128,
           "layers": []
-        },
-        "triggers": []
+        }
       }
     },
     "deletedFiles": [],
-    "rootNode": "169847b2-dcd0-463d-abe7-f64b993f8fe5",
+    "rootNode": "09b99049-d03d-4521-97c2-39be5e6b4aed",
     "openFiles": [
-      "1194452a-1892-44f0-9f23-4ae56e676970"
+      "5b693569-94b8-45cb-9ad0-afc25d6b36b0"
     ],
-    "currentFileId": "1194452a-1892-44f0-9f23-4ae56e676970",
-    "resources": {},
+    "currentFileId": "5b693569-94b8-45cb-9ad0-afc25d6b36b0",
+    "resources": {
+      "apigusEast1TestAPIany": {
+        "name": "apigusEast1TestAPIany",
+        "type": "API_GATEWAY",
+        "config": {
+          "selectedRegion": "us-east-1",
+          "apiMode": 1,
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
+          "endpointType": "EDGE",
+          "rootResourceId": "h2lelj6j7k",
+          "existingResources": {
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/",
+          "resourceName": "",
+          "resourceId": "h2lelj6j7k",
+          "restMethod": "ANY",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 1,
+          "stageName": "test",
+          "stageDeploymentId": "3dlxee"
+        },
+        "globallyEditable": false
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -65,7 +100,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1561012648756
+    "lastSave": 1561012782695
   },
   "VCS_STATE": {
     "provider": "GitHub",
