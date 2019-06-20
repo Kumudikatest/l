@@ -1,22 +1,21 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "d6c29768-583e-45aa-829c-b7a5a327e0b1": {
-        "id": "d6c29768-583e-45aa-829c-b7a5a327e0b1",
+      "169847b2-dcd0-463d-abe7-f64b993f8fe5": {
+        "id": "169847b2-dcd0-463d-abe7-f64b993f8fe5",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "f611e642-1a32-4c75-981c-b1090a9253d8",
-          "aa981552-7b4a-4a4b-af92-5b41061a9735"
+          "1194452a-1892-44f0-9f23-4ae56e676970"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "f611e642-1a32-4c75-981c-b1090a9253d8": {
-        "id": "f611e642-1a32-4c75-981c-b1090a9253d8",
-        "parent": "d6c29768-583e-45aa-829c-b7a5a327e0b1",
+      "1194452a-1892-44f0-9f23-4ae56e676970": {
+        "id": "1194452a-1892-44f0-9f23-4ae56e676970",
+        "parent": "169847b2-dcd0-463d-abe7-f64b993f8fe5",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
@@ -32,38 +31,14 @@
           "layers": []
         },
         "triggers": []
-      },
-      "aa981552-7b4a-4a4b-af92-5b41061a9735": {
-        "id": "aa981552-7b4a-4a4b-af92-5b41061a9735",
-        "parent": "d6c29768-583e-45aa-829c-b7a5a327e0b1",
-        "name": "dir",
-        "type": "DIRECTORY",
-        "isDirectory": true,
-        "children": [
-          "7da3bd00-bbb1-47a2-b286-34c82f3afbd4"
-        ],
-        "isRemovable": true,
-        "filePath": "l/dir"
-      },
-      "7da3bd00-bbb1-47a2-b286-34c82f3afbd4": {
-        "id": "7da3bd00-bbb1-47a2-b286-34c82f3afbd4",
-        "parent": "aa981552-7b4a-4a4b-af92-5b41061a9735",
-        "name": "js.js",
-        "type": "JS_FILE",
-        "isDirectory": false,
-        "children": [],
-        "isRemovable": true,
-        "filePath": "l/dir/js.js",
-        "code": ""
       }
     },
     "deletedFiles": [],
-    "rootNode": "d6c29768-583e-45aa-829c-b7a5a327e0b1",
+    "rootNode": "169847b2-dcd0-463d-abe7-f64b993f8fe5",
     "openFiles": [
-      "f611e642-1a32-4c75-981c-b1090a9253d8",
-      "7da3bd00-bbb1-47a2-b286-34c82f3afbd4"
+      "1194452a-1892-44f0-9f23-4ae56e676970"
     ],
-    "currentFileId": "7da3bd00-bbb1-47a2-b286-34c82f3afbd4",
+    "currentFileId": "1194452a-1892-44f0-9f23-4ae56e676970",
     "resources": {},
     "customTemplate": {
       "dialect": null,
@@ -90,7 +65,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1560851526853
+    "lastSave": 1561012648756
   },
   "VCS_STATE": {
     "provider": "GitHub",
