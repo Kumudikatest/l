@@ -1,21 +1,21 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "09b99049-d03d-4521-97c2-39be5e6b4aed": {
-        "id": "09b99049-d03d-4521-97c2-39be5e6b4aed",
+      "e1e902ac-3db7-49ce-a7b1-f9da3e9c5807": {
+        "id": "e1e902ac-3db7-49ce-a7b1-f9da3e9c5807",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "5b693569-94b8-45cb-9ad0-afc25d6b36b0"
+          "e0f81434-2779-4674-ba4c-e380a6d7ada7"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "5b693569-94b8-45cb-9ad0-afc25d6b36b0": {
-        "id": "5b693569-94b8-45cb-9ad0-afc25d6b36b0",
-        "parent": "09b99049-d03d-4521-97c2-39be5e6b4aed",
+      "e0f81434-2779-4674-ba4c-e380a6d7ada7": {
+        "id": "e0f81434-2779-4674-ba4c-e380a6d7ada7",
+        "parent": "e1e902ac-3db7-49ce-a7b1-f9da3e9c5807",
         "name": "lambda.js",
         "type": "LAMBDA_FILE",
         "isDirectory": false,
@@ -25,7 +25,7 @@
         "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "triggers": [
           {
-            "resourceName": "apigusEast1TestAPIany",
+            "resourceName": "apigusEast1TestAPIget",
             "config": {}
           }
         ],
@@ -39,14 +39,14 @@
       }
     },
     "deletedFiles": [],
-    "rootNode": "09b99049-d03d-4521-97c2-39be5e6b4aed",
+    "rootNode": "e1e902ac-3db7-49ce-a7b1-f9da3e9c5807",
     "openFiles": [
-      "5b693569-94b8-45cb-9ad0-afc25d6b36b0"
+      "e0f81434-2779-4674-ba4c-e380a6d7ada7"
     ],
-    "currentFileId": "5b693569-94b8-45cb-9ad0-afc25d6b36b0",
+    "currentFileId": "e0f81434-2779-4674-ba4c-e380a6d7ada7",
     "resources": {
-      "apigusEast1TestAPIany": {
-        "name": "apigusEast1TestAPIany",
+      "apigusEast1TestAPIget": {
+        "name": "apigusEast1TestAPIget",
         "type": "API_GATEWAY",
         "config": {
           "selectedRegion": "us-east-1",
@@ -65,12 +65,12 @@
           "resourcePath": "/",
           "resourceName": "",
           "resourceId": "h2lelj6j7k",
-          "restMethod": "ANY",
+          "restMethod": "GET",
           "proxyIntegration": false,
           "enableCORS": false,
           "stageMode": 1,
-          "stageName": "test",
-          "stageDeploymentId": "3dlxee"
+          "stageName": "dev",
+          "stageDeploymentId": "dlb09x"
         },
         "globallyEditable": false
       }
@@ -100,7 +100,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1561012782695
+    "lastSave": 1561014170059
   },
   "VCS_STATE": {
     "provider": "GitHub",
