@@ -9,7 +9,8 @@
         "isDirectory": true,
         "children": [
           "5f737158-6b3d-4897-94cc-dc55370385f0",
-          "4515087e-b69f-4c6b-a404-f327bc81a07f"
+          "4515087e-b69f-4c6b-a404-f327bc81a07f",
+          "45a05794-f169-4dc1-b051-5c083f06c605"
         ],
         "isRemovable": false,
         "filePath": "l"
@@ -42,16 +43,28 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/js.js",
-        "code": "//comment1"
+        "code": "//comment1\r\n//comment2"
+      },
+      "45a05794-f169-4dc1-b051-5c083f06c605": {
+        "id": "45a05794-f169-4dc1-b051-5c083f06c605",
+        "parent": "86b75ba5-a815-4278-9629-a4b61ea2f4a7",
+        "name": "c.css",
+        "type": "CSS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "l/c.css",
+        "code": ""
       }
     },
     "deletedFiles": [],
     "rootNode": "86b75ba5-a815-4278-9629-a4b61ea2f4a7",
     "openFiles": [
       "5f737158-6b3d-4897-94cc-dc55370385f0",
-      "4515087e-b69f-4c6b-a404-f327bc81a07f"
+      "4515087e-b69f-4c6b-a404-f327bc81a07f",
+      "45a05794-f169-4dc1-b051-5c083f06c605"
     ],
-    "currentFileId": "4515087e-b69f-4c6b-a404-f327bc81a07f",
+    "currentFileId": "45a05794-f169-4dc1-b051-5c083f06c605",
     "resources": {},
     "customTemplate": {
       "dialect": null,
@@ -78,7 +91,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1561616078704
+    "lastSave": 1561617887393
   },
   "VCS_STATE": {
     "provider": "GitHub",
