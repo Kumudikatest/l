@@ -1,30 +1,29 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "86b75ba5-a815-4278-9629-a4b61ea2f4a7": {
-        "id": "86b75ba5-a815-4278-9629-a4b61ea2f4a7",
+      "4e24d4f3-90ae-449e-871e-f3237061d537": {
+        "id": "4e24d4f3-90ae-449e-871e-f3237061d537",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "5f737158-6b3d-4897-94cc-dc55370385f0",
-          "4515087e-b69f-4c6b-a404-f327bc81a07f",
-          "45a05794-f169-4dc1-b051-5c083f06c605"
+          "bbee1ade-74f0-4d27-af7f-0d34334d6388",
+          "05b1e2ac-d92d-48c0-ab69-5fb1e5d46339"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "5f737158-6b3d-4897-94cc-dc55370385f0": {
-        "id": "5f737158-6b3d-4897-94cc-dc55370385f0",
-        "parent": "86b75ba5-a815-4278-9629-a4b61ea2f4a7",
+      "bbee1ade-74f0-4d27-af7f-0d34334d6388": {
+        "id": "bbee1ade-74f0-4d27-af7f-0d34334d6388",
+        "parent": "4e24d4f3-90ae-449e-871e-f3237061d537",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "let SL_REDIS = require('slappforge-sdk-redis');\nlet clusterManager = require('./ClusterManager');\nconst redis = new SL_REDIS.Redis(clusterManager);\n\nexports.handler = function (event, context, callback) {\n    // You must always quit the redis client after it's used\n    redis.set({\n        clusterIdentifier: 'k',\n        params: [{\n            key: 'ID',\n            value: '1'\n        }]\n    }, function (error, response, redisClient) {\n        if (error) {\n            callback(error);\n            console.log(error);\n        } else {\n            console.log(response);\n            redisClient.quit();     \n        }\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -32,40 +31,101 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [],
+        "testCases": {
+          "855791b9-6b88-45ca-9426-f265334f6702": {
+            "id": "855791b9-6b88-45ca-9426-f265334f6702",
+            "name": "Unnamed event",
+            "functionId": "bbee1ade-74f0-4d27-af7f-0d34334d6388",
+            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
+          }
+        }
       },
-      "4515087e-b69f-4c6b-a404-f327bc81a07f": {
-        "id": "4515087e-b69f-4c6b-a404-f327bc81a07f",
-        "parent": "86b75ba5-a815-4278-9629-a4b61ea2f4a7",
-        "name": "js.js",
+      "05b1e2ac-d92d-48c0-ab69-5fb1e5d46339": {
+        "id": "05b1e2ac-d92d-48c0-ab69-5fb1e5d46339",
+        "parent": "4e24d4f3-90ae-449e-871e-f3237061d537",
+        "name": "ClusterManager.js",
         "type": "JS_FILE",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
-        "filePath": "l/js.js",
-        "code": "//comment1\r\n//comment2"
-      },
-      "45a05794-f169-4dc1-b051-5c083f06c605": {
-        "id": "45a05794-f169-4dc1-b051-5c083f06c605",
-        "parent": "86b75ba5-a815-4278-9629-a4b61ea2f4a7",
-        "name": "c.css",
-        "type": "CSS_FILE",
-        "isDirectory": false,
-        "children": [],
-        "isRemovable": true,
-        "filePath": "l/c.css",
-        "code": ""
+        "filePath": "l/ClusterManager.js",
+        "code": "module.exports = function() {\n    this.clusters = [];\n\n    this.clusters[\"k\"] = {\n        host: process.env.EndPoint_redisK,\n        port: 6379,\n        clusterModeEnabled: false\n    };\n};"
       }
     },
     "deletedFiles": [],
-    "rootNode": "86b75ba5-a815-4278-9629-a4b61ea2f4a7",
+    "rootNode": "4e24d4f3-90ae-449e-871e-f3237061d537",
     "openFiles": [
-      "5f737158-6b3d-4897-94cc-dc55370385f0",
-      "4515087e-b69f-4c6b-a404-f327bc81a07f",
-      "45a05794-f169-4dc1-b051-5c083f06c605"
+      "bbee1ade-74f0-4d27-af7f-0d34334d6388"
     ],
-    "currentFileId": "45a05794-f169-4dc1-b051-5c083f06c605",
-    "resources": {},
+    "currentFileId": "bbee1ade-74f0-4d27-af7f-0d34334d6388",
+    "resources": {
+      "redis-k": {
+        "name": "redis-k",
+        "type": "Redis",
+        "config": {
+          "clusterConfig": {
+            "engineType": "redis",
+            "clusterSpec": {
+              "nodeTypeClass": "cache.t2.small",
+              "engineVersion": "5.0.3",
+              "clusterModeEnabled": false,
+              "autoFailoverEnabled": true,
+              "numOfShards": 3,
+              "numOfReplicas": 2
+            },
+            "clusterSetting": {
+              "clusterName": "k",
+              "clusterDescription": "k test",
+              "port": 6379
+            },
+            "vpcSpec": {
+              "vpcType": "EXISTING",
+              "existingVPC": {
+                "vpcID": "vpc-de7ccab9",
+                "subNetID": "subnet-6d284024",
+                "securityGroupID": "sg-19f02060"
+              },
+              "newVPC": {
+                "vpcName": "",
+                "vpcIPv4CIDR": "10.0.0.0/16",
+                "subnetName": "",
+                "subnetIPv4CIDR": "10.0.0.0/20"
+              }
+            },
+            "host": "",
+            "doesExist": false,
+            "alreadyDeployed": false,
+            "redisClient": ""
+          },
+          "clusterResources": [],
+          "editMode": false,
+          "enableInject": true,
+          "isGlobalEditMode": false,
+          "isClusterSelectionValid": true,
+          "isNewFromGlobal": false,
+          "mode": 0,
+          "operation": {
+            "str": "REDIS_SET",
+            "operation": "set",
+            "displayName": "SET",
+            "type": {
+              "str": "REDIS_STRINGS",
+              "type": "strings",
+              "displayName": "STRINGS"
+            }
+          },
+          "params": [],
+          "projectRegion": "ap-southeast-1",
+          "reusableMode": false,
+          "showOperations": true,
+          "validator": {
+            "validatableFields": {},
+            "validity": true
+          }
+        }
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -81,17 +141,25 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "slappforge-sdk-redis": {
+          "name": "slappforge-sdk-redis",
+          "language": "javascript",
+          "version": "0.0.3",
+          "dev": false,
+          "notRemovable": false
+        }
+      }
     }
   },
   "PROJECT_META": {
     "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
-    "projectRegion": "us-east-1",
+    "projectRegion": "ap-southeast-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1561617887393
+    "lastSave": 1562154347954
   },
   "VCS_STATE": {
     "provider": "GitHub",
