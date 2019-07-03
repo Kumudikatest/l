@@ -1,29 +1,28 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "4e24d4f3-90ae-449e-871e-f3237061d537": {
-        "id": "4e24d4f3-90ae-449e-871e-f3237061d537",
+      "146bd1fb-2ba2-4351-8c26-2e6eda7147c0": {
+        "id": "146bd1fb-2ba2-4351-8c26-2e6eda7147c0",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "bbee1ade-74f0-4d27-af7f-0d34334d6388",
-          "05b1e2ac-d92d-48c0-ab69-5fb1e5d46339"
+          "cf39f533-48d0-4ec5-92d1-8840c186c546"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "bbee1ade-74f0-4d27-af7f-0d34334d6388": {
-        "id": "bbee1ade-74f0-4d27-af7f-0d34334d6388",
-        "parent": "4e24d4f3-90ae-449e-871e-f3237061d537",
+      "cf39f533-48d0-4ec5-92d1-8840c186c546": {
+        "id": "cf39f533-48d0-4ec5-92d1-8840c186c546",
+        "parent": "146bd1fb-2ba2-4351-8c26-2e6eda7147c0",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let SL_REDIS = require('slappforge-sdk-redis');\nlet clusterManager = require('./ClusterManager');\nconst redis = new SL_REDIS.Redis(clusterManager);\n\nexports.handler = function (event, context, callback) {\n    // You must always quit the redis client after it's used\n    redis.set({\n        clusterIdentifier: 'k',\n        params: [{\n            key: 'ID',\n            value: '1'\n        }]\n    }, function (error, response, redisClient) {\n        if (error) {\n            callback(error);\n            console.log(error);\n        } else {\n            console.log(response);\n            redisClient.quit();     \n        }\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let AWS = require('aws-sdk');\nconst cognito_idp = new AWS.CognitoIdentityServiceProvider();\n\nexports.handler = function (event, context, callback) {\n    cognito_idp.listUsers({\n        UserPoolId: \"us-east-1_D10y3fy0o\",\n        Limit: 10\n    }, function (error, data) {\n        if (error) {\n            // implement error handling logic here\n            throw error;\n        }\n        // your logic goes within this block\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -31,97 +30,271 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": [],
-        "testCases": {
-          "855791b9-6b88-45ca-9426-f265334f6702": {
-            "id": "855791b9-6b88-45ca-9426-f265334f6702",
-            "name": "Unnamed event",
-            "functionId": "bbee1ade-74f0-4d27-af7f-0d34334d6388",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
-      },
-      "05b1e2ac-d92d-48c0-ab69-5fb1e5d46339": {
-        "id": "05b1e2ac-d92d-48c0-ab69-5fb1e5d46339",
-        "parent": "4e24d4f3-90ae-449e-871e-f3237061d537",
-        "name": "ClusterManager.js",
-        "type": "JS_FILE",
-        "isDirectory": false,
-        "children": [],
-        "isRemovable": true,
-        "filePath": "l/ClusterManager.js",
-        "code": "module.exports = function() {\n    this.clusters = [];\n\n    this.clusters[\"k\"] = {\n        host: process.env.EndPoint_redisK,\n        port: 6379,\n        clusterModeEnabled: false\n    };\n};"
+        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "4e24d4f3-90ae-449e-871e-f3237061d537",
+    "rootNode": "146bd1fb-2ba2-4351-8c26-2e6eda7147c0",
     "openFiles": [
-      "bbee1ade-74f0-4d27-af7f-0d34334d6388"
+      "cf39f533-48d0-4ec5-92d1-8840c186c546"
     ],
-    "currentFileId": "bbee1ade-74f0-4d27-af7f-0d34334d6388",
+    "currentFileId": "cf39f533-48d0-4ec5-92d1-8840c186c546",
     "resources": {
-      "redis-k": {
-        "name": "redis-k",
-        "type": "Redis",
+      "cognitotest": {
+        "name": "cognitotest",
+        "type": "CognitoIdentityServiceProvider",
         "config": {
-          "clusterConfig": {
-            "engineType": "redis",
-            "clusterSpec": {
-              "nodeTypeClass": "cache.t2.small",
-              "engineVersion": "5.0.3",
-              "clusterModeEnabled": false,
-              "autoFailoverEnabled": true,
-              "numOfShards": 3,
-              "numOfReplicas": 2
-            },
-            "clusterSetting": {
-              "clusterName": "k",
-              "clusterDescription": "k test",
-              "port": 6379
-            },
-            "vpcSpec": {
-              "vpcType": "EXISTING",
-              "existingVPC": {
-                "vpcID": "vpc-de7ccab9",
-                "subNetID": "subnet-6d284024",
-                "securityGroupID": "sg-19f02060"
-              },
-              "newVPC": {
-                "vpcName": "",
-                "vpcIPv4CIDR": "10.0.0.0/16",
-                "subnetName": "",
-                "subnetIPv4CIDR": "10.0.0.0/20"
+          "mode": 1,
+          "name": "test",
+          "arn": "arn:aws:cognito-idp:us-east-1:318300609668:userpool/us-east-1_D10y3fy0o",
+          "userPool": {
+            "Id": "us-east-1_D10y3fy0o",
+            "Name": "test",
+            "LambdaConfig": {},
+            "Policies": {
+              "PasswordPolicy": {
+                "MinimumLength": 8,
+                "RequireUppercase": true,
+                "RequireLowercase": true,
+                "RequireNumbers": true,
+                "RequireSymbols": true
               }
             },
-            "host": "",
-            "doesExist": false,
-            "alreadyDeployed": false,
-            "redisClient": ""
-          },
-          "clusterResources": [],
-          "editMode": false,
-          "enableInject": true,
-          "isGlobalEditMode": false,
-          "isClusterSelectionValid": true,
-          "isNewFromGlobal": false,
-          "mode": 0,
-          "operation": {
-            "str": "REDIS_SET",
-            "operation": "set",
-            "displayName": "SET",
-            "type": {
-              "str": "REDIS_STRINGS",
-              "type": "strings",
-              "displayName": "STRINGS"
-            }
-          },
-          "params": [],
-          "projectRegion": "ap-southeast-1",
-          "reusableMode": false,
-          "showOperations": true,
-          "validator": {
-            "validatableFields": {},
-            "validity": true
+            "SmsVerificationMessage": "Your verification code is {####}. ",
+            "EmailVerificationMessage": "Your verification code is {####}. ",
+            "EmailVerificationSubject": "Your verification code",
+            "VerificationMessageTemplate": {
+              "SmsMessage": "Your verification code is {####}. ",
+              "EmailMessage": "Your verification code is {####}. ",
+              "EmailSubject": "Your verification code",
+              "DefaultEmailOption": "CONFIRM_WITH_CODE"
+            },
+            "SmsAuthenticationMessage": "Your authentication code is {####}. ",
+            "MfaConfiguration": "OFF",
+            "EmailConfiguration": {},
+            "UserPoolTags": {},
+            "AdminCreateUserConfig": {
+              "AllowAdminCreateUserOnly": false,
+              "UnusedAccountValidityDays": 7,
+              "InviteMessageTemplate": {
+                "SMSMessage": "Your username is {username} and temporary password is {####}. ",
+                "EmailMessage": "Your username is {username} and temporary password is {####}. ",
+                "EmailSubject": "Your temporary password"
+              }
+            },
+            "SchemaAttributes": [
+              {
+                "Name": "sub",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": false,
+                "Required": true,
+                "StringAttributeConstraints": {
+                  "MinLength": "1",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "given_name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "family_name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "middle_name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "nickname",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "preferred_username",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "profile",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "picture",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "website",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "email",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": true,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "email_verified",
+                "AttributeDataType": "Boolean",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false
+              },
+              {
+                "Name": "gender",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "birthdate",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "10",
+                  "MaxLength": "10"
+                }
+              },
+              {
+                "Name": "zoneinfo",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "locale",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "phone_number",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "phone_number_verified",
+                "AttributeDataType": "Boolean",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false
+              },
+              {
+                "Name": "address",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "updated_at",
+                "AttributeDataType": "Number",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "NumberAttributeConstraints": {
+                  "MinValue": "0"
+                }
+              }
+            ]
           }
         }
       }
@@ -142,11 +315,11 @@
     ],
     "packageJSON": {
       "dependencies": {
-        "slappforge-sdk-redis": {
-          "name": "slappforge-sdk-redis",
+        "aws-sdk": {
+          "name": "aws-sdk",
           "language": "javascript",
-          "version": "0.0.3",
-          "dev": false,
+          "version": "2.176.0",
+          "dev": true,
           "notRemovable": false
         }
       }
@@ -156,10 +329,10 @@
     "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
-    "projectRegion": "ap-southeast-1",
+    "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562154347954
+    "lastSave": 1562159464393
   },
   "VCS_STATE": {
     "provider": "GitHub",

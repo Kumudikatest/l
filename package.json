@@ -1,8 +1,8 @@
 {
   "name": "l",
   "version": "1.0.0",
-  "dependencies": {
-    "slappforge-sdk-redis": "0.0.3"
-  },
-  "devDependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "aws-sdk": "2.176.0"
+  }
 }

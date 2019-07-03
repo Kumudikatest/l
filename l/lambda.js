@@ -1,23 +1,16 @@
-let SL_REDIS = require('slappforge-sdk-redis');
-let clusterManager = require('./ClusterManager');
-const redis = new SL_REDIS.Redis(clusterManager);
+let AWS = require('aws-sdk');
+const cognito_idp = new AWS.CognitoIdentityServiceProvider();
 
 exports.handler = function (event, context, callback) {
-    // You must always quit the redis client after it's used
-    redis.set({
-        clusterIdentifier: 'k',
-        params: [{
-            key: 'ID',
-            value: '1'
-        }]
-    }, function (error, response, redisClient) {
+    cognito_idp.listUsers({
+        UserPoolId: "us-east-1_D10y3fy0o",
+        Limit: 10
+    }, function (error, data) {
         if (error) {
-            callback(error);
-            console.log(error);
-        } else {
-            console.log(response);
-            redisClient.quit();     
+            // implement error handling logic here
+            throw error;
         }
+        // your logic goes within this block
     });
 
     callback(null, { "message": "Successfully executed" });
