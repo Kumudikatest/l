@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let SL_AWS = require('slappforge-sdk-aws');\nlet connectionManager = require('./ConnectionManager');\nconst rds = new SL_AWS.RDS(connectionManager);\n\nexports.handler = function (event, context, callback) {\n\n    // You can pass the existing connection to this function.\n    // A new connection will be created if it's not present as the third param \n    // You must always end/destroy the DB connection after it's used\n                // You must always end/destroy the DB connection after it's used\n                rds.beginTransaction({\n                    instanceIdentifier: 'k'\n                },function (error,connection) {\n                    if (error) {\n                        throw error;\n                    }\n\n                    connection.end();\n                });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "exports.handler = function (event, context, callback) {\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -51,50 +51,7 @@
       "17613c5a-634d-4fa6-b500-ad29029f57fa"
     ],
     "currentFileId": "17613c5a-634d-4fa6-b500-ad29029f57fa",
-    "resources": {
-      "rds-k": {
-        "name": "rds-k",
-        "type": "RDS",
-        "config": {
-          "editMode": false,
-          "operation": 0,
-          "rdsInstance": {
-            "rdsEngineType": "mysql",
-            "rdsEdition": "",
-            "rdsInstanceSpec": {
-              "dbInstanceClass": "db.t2.micro",
-              "dbLicenseModel": "general-public-license",
-              "dbEngineVersion": "5.7.19"
-            },
-            "rdsSetting": {
-              "instanceIdentifier": "k",
-              "masterUsername": "k",
-              "masterPassword": "Test#123"
-            },
-            "rdsDBOptions": {
-              "dbName": "k",
-              "dbPort": "8080"
-            },
-            "rdsInstanceArn": "",
-            "Host": "",
-            "doesExist": false,
-            "initializationQuery": "CREATE TABLE Test (ID int(5));",
-            "alreadyDeployed": false
-          },
-          "rdsInstanceResources": [],
-          "projectRegion": "us-east-2",
-          "mode": 0,
-          "additionalFiles": [],
-          "params": {
-            "query": "INSERT INTO Test (ID);",
-            "inserts": "1"
-          },
-          "isGlobalEditMode": false,
-          "enableInject": true,
-          "isNewFromGlobal": false
-        }
-      }
-    },
+    "resources": {},
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -128,7 +85,7 @@
     "projectRegion": "us-east-2",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562236170739
+    "lastSave": 1562238640637
   },
   "VCS_STATE": {
     "provider": "GitHub",
