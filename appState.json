@@ -1,28 +1,29 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "146bd1fb-2ba2-4351-8c26-2e6eda7147c0": {
-        "id": "146bd1fb-2ba2-4351-8c26-2e6eda7147c0",
+      "9fb29806-03c5-4d79-b7aa-fa4ef1b19197": {
+        "id": "9fb29806-03c5-4d79-b7aa-fa4ef1b19197",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "cf39f533-48d0-4ec5-92d1-8840c186c546"
+          "17613c5a-634d-4fa6-b500-ad29029f57fa",
+          "bf9b5669-52e8-40ea-a28a-347cde2f52e9"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "cf39f533-48d0-4ec5-92d1-8840c186c546": {
-        "id": "cf39f533-48d0-4ec5-92d1-8840c186c546",
-        "parent": "146bd1fb-2ba2-4351-8c26-2e6eda7147c0",
+      "17613c5a-634d-4fa6-b500-ad29029f57fa": {
+        "id": "17613c5a-634d-4fa6-b500-ad29029f57fa",
+        "parent": "9fb29806-03c5-4d79-b7aa-fa4ef1b19197",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst cognito_idp = new AWS.CognitoIdentityServiceProvider();\n\nexports.handler = function (event, context, callback) {\n    cognito_idp.listUsers({\n        UserPoolId: \"us-east-1_D10y3fy0o\",\n        Limit: 10\n    }, function (error, data) {\n        if (error) {\n            // implement error handling logic here\n            throw error;\n        }\n        // your logic goes within this block\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "let SL_AWS = require('slappforge-sdk-aws');\nlet connectionManager = require('./ConnectionManager');\nconst rds = new SL_AWS.RDS(connectionManager);\n\nexports.handler = function (event, context, callback) {\n\n    // You can pass the existing connection to this function.\n    // A new connection will be created if it's not present as the third param \n    // You must always end/destroy the DB connection after it's used\n    rds.query({\n        instanceIdentifier: 'k',\n        query: 'INSERT INTO Test (ID);',\n        inserts: [1]\n    }, function (error, results, connection) {\n        if (error) {\n            console.log(\"Error occurred\");\n            throw error;\n        } else {\n            console.log(\"Success\")\n            console.log(results);\n        }\n\n        connection.end();\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -31,271 +32,66 @@
           "layers": []
         },
         "triggers": []
+      },
+      "bf9b5669-52e8-40ea-a28a-347cde2f52e9": {
+        "id": "bf9b5669-52e8-40ea-a28a-347cde2f52e9",
+        "parent": "9fb29806-03c5-4d79-b7aa-fa4ef1b19197",
+        "name": "ConnectionManager.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "l/ConnectionManager.js",
+        "code": "module.exports = function() {\n    this.dbConnections = [];\n\n    this.dbConnections[\"k\"] = {\n        host: process.env.EndPoint_rdsK,\n        port: process.env.Port_rdsK,\n        user: process.env.User_rdsK,\n        password: process.env.Password_rdsK,\n        database: \"k\"\n    };\n};"
       }
     },
     "deletedFiles": [],
-    "rootNode": "146bd1fb-2ba2-4351-8c26-2e6eda7147c0",
+    "rootNode": "9fb29806-03c5-4d79-b7aa-fa4ef1b19197",
     "openFiles": [
-      "cf39f533-48d0-4ec5-92d1-8840c186c546"
+      "17613c5a-634d-4fa6-b500-ad29029f57fa"
     ],
-    "currentFileId": "cf39f533-48d0-4ec5-92d1-8840c186c546",
+    "currentFileId": "17613c5a-634d-4fa6-b500-ad29029f57fa",
     "resources": {
-      "cognitotest": {
-        "name": "cognitotest",
-        "type": "CognitoIdentityServiceProvider",
+      "rds-k": {
+        "name": "rds-k",
+        "type": "RDS",
         "config": {
-          "mode": 1,
-          "name": "test",
-          "arn": "arn:aws:cognito-idp:us-east-1:318300609668:userpool/us-east-1_D10y3fy0o",
-          "userPool": {
-            "Id": "us-east-1_D10y3fy0o",
-            "Name": "test",
-            "LambdaConfig": {},
-            "Policies": {
-              "PasswordPolicy": {
-                "MinimumLength": 8,
-                "RequireUppercase": true,
-                "RequireLowercase": true,
-                "RequireNumbers": true,
-                "RequireSymbols": true
-              }
+          "editMode": false,
+          "operation": 0,
+          "rdsInstance": {
+            "rdsEngineType": "mysql",
+            "rdsEdition": "",
+            "rdsInstanceSpec": {
+              "dbInstanceClass": "db.t2.micro",
+              "dbLicenseModel": "general-public-license",
+              "dbEngineVersion": "5.7.19"
             },
-            "SmsVerificationMessage": "Your verification code is {####}. ",
-            "EmailVerificationMessage": "Your verification code is {####}. ",
-            "EmailVerificationSubject": "Your verification code",
-            "VerificationMessageTemplate": {
-              "SmsMessage": "Your verification code is {####}. ",
-              "EmailMessage": "Your verification code is {####}. ",
-              "EmailSubject": "Your verification code",
-              "DefaultEmailOption": "CONFIRM_WITH_CODE"
+            "rdsSetting": {
+              "instanceIdentifier": "k",
+              "masterUsername": "k",
+              "masterPassword": "Test#123"
             },
-            "SmsAuthenticationMessage": "Your authentication code is {####}. ",
-            "MfaConfiguration": "OFF",
-            "EmailConfiguration": {},
-            "UserPoolTags": {},
-            "AdminCreateUserConfig": {
-              "AllowAdminCreateUserOnly": false,
-              "UnusedAccountValidityDays": 7,
-              "InviteMessageTemplate": {
-                "SMSMessage": "Your username is {username} and temporary password is {####}. ",
-                "EmailMessage": "Your username is {username} and temporary password is {####}. ",
-                "EmailSubject": "Your temporary password"
-              }
+            "rdsDBOptions": {
+              "dbName": "k",
+              "dbPort": "8080"
             },
-            "SchemaAttributes": [
-              {
-                "Name": "sub",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": false,
-                "Required": true,
-                "StringAttributeConstraints": {
-                  "MinLength": "1",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "name",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "given_name",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "family_name",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "middle_name",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "nickname",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "preferred_username",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "profile",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "picture",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "website",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "email",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": true,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "email_verified",
-                "AttributeDataType": "Boolean",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false
-              },
-              {
-                "Name": "gender",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "birthdate",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "10",
-                  "MaxLength": "10"
-                }
-              },
-              {
-                "Name": "zoneinfo",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "locale",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "phone_number",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "phone_number_verified",
-                "AttributeDataType": "Boolean",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false
-              },
-              {
-                "Name": "address",
-                "AttributeDataType": "String",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "StringAttributeConstraints": {
-                  "MinLength": "0",
-                  "MaxLength": "2048"
-                }
-              },
-              {
-                "Name": "updated_at",
-                "AttributeDataType": "Number",
-                "DeveloperOnlyAttribute": false,
-                "Mutable": true,
-                "Required": false,
-                "NumberAttributeConstraints": {
-                  "MinValue": "0"
-                }
-              }
-            ]
-          }
+            "rdsInstanceArn": "",
+            "Host": "",
+            "doesExist": false,
+            "initializationQuery": "CREATE TABLE Test (ID int(5));",
+            "alreadyDeployed": false
+          },
+          "rdsInstanceResources": [],
+          "projectRegion": "us-east-2",
+          "mode": 0,
+          "additionalFiles": [],
+          "params": {
+            "query": "INSERT INTO Test (ID);",
+            "inserts": "1"
+          },
+          "isGlobalEditMode": false,
+          "enableInject": true,
+          "isNewFromGlobal": false
         }
       }
     },
@@ -315,11 +111,11 @@
     ],
     "packageJSON": {
       "dependencies": {
-        "aws-sdk": {
-          "name": "aws-sdk",
+        "slappforge-sdk-aws": {
+          "name": "slappforge-sdk-aws",
           "language": "javascript",
-          "version": "2.176.0",
-          "dev": true,
+          "version": "0.0.5",
+          "dev": false,
           "notRemovable": false
         }
       }
@@ -329,10 +125,10 @@
     "projectName": "l",
     "projectDescription": "",
     "projectVersion": "1.0.0",
-    "projectRegion": "us-east-1",
+    "projectRegion": "us-east-2",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562159464393
+    "lastSave": 1562235222564
   },
   "VCS_STATE": {
     "provider": "GitHub",
