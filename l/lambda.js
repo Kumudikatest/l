@@ -6,10 +6,11 @@ exports.handler = function (event, context, callback) {
 
     sqs.receiveMessage({
         QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/Newk`,
-        AttributeNames: ['All'],
+        AttributeNames: ['SenderId'],
         MaxNumberOfMessages: '1',
         VisibilityTimeout: '30',
-        WaitTimeSeconds: '0'
+        WaitTimeSeconds: '0',
+        MessageAttributeNames: ['newtest']
     }).promise()
         .then(receivedMsgData => {
             if (!!(receivedMsgData) && !!(receivedMsgData.Messages)) {
