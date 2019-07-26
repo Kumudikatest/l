@@ -1,28 +1,28 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "1e1ac6b1-1e71-48f5-9d91-9f5125799fe2": {
-        "id": "1e1ac6b1-1e71-48f5-9d91-9f5125799fe2",
+      "e54b80e7-54e6-431a-9120-4341dad9df7a": {
+        "id": "e54b80e7-54e6-431a-9120-4341dad9df7a",
         "parent": null,
         "name": "l",
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "e59e8b09-7959-4b98-af91-a025327d449e"
+          "9b9677d4-7f12-4307-8ddb-237cac153d9e"
         ],
         "isRemovable": false,
         "filePath": "l"
       },
-      "e59e8b09-7959-4b98-af91-a025327d449e": {
-        "id": "e59e8b09-7959-4b98-af91-a025327d449e",
-        "parent": "1e1ac6b1-1e71-48f5-9d91-9f5125799fe2",
+      "9b9677d4-7f12-4307-8ddb-237cac153d9e": {
+        "id": "9b9677d4-7f12-4307-8ddb-237cac153d9e",
+        "parent": "e54b80e7-54e6-431a-9120-4341dad9df7a",
         "name": "lambda.js",
         "type": "JS_LAMBDA",
         "isDirectory": false,
         "children": [],
         "isRemovable": true,
         "filePath": "l/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nlet SL_AWS = require('slappforge-sdk-aws');\nconst sqs = new SL_AWS.SQS(AWS);\n\nexports.handler = function (event, context, callback) {\n\n    sqs.sendMessage({\n        MessageBody: 'k1',\n        QueueUrl: `https://sqs.${process.env.AWS_REGION}.amazonaws.com/${process.env.SIGMA_AWS_ACC_ID}/k`,\n        DelaySeconds: '0',\n        MessageAttributes: {}\n    }, function (data) {\n        console.log(data);\n        // your logic (logging etc) to handle successful message delivery, should be here\n    }, function (error) {\n        // your logic (logging etc) to handle failures, should be here\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -30,93 +30,16 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": [
-          {
-            "resourceName": "apigusEast1TestAPIany",
-            "config": {}
-          }
-        ],
-        "testCases": {
-          "80c0ceb1-b9ca-4a49-9de5-abb193cf443e": {
-            "id": "80c0ceb1-b9ca-4a49-9de5-abb193cf443e",
-            "name": "Unnamed event",
-            "functionId": "e59e8b09-7959-4b98-af91-a025327d449e",
-            "event": "{\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n}"
-          }
-        }
+        "triggers": []
       }
     },
     "deletedFiles": [],
-    "rootNode": "1e1ac6b1-1e71-48f5-9d91-9f5125799fe2",
+    "rootNode": "e54b80e7-54e6-431a-9120-4341dad9df7a",
     "openFiles": [
-      "e59e8b09-7959-4b98-af91-a025327d449e"
+      "9b9677d4-7f12-4307-8ddb-237cac153d9e"
     ],
-    "currentFileId": "e59e8b09-7959-4b98-af91-a025327d449e",
-    "resources": {
-      "apigusEast1TestAPIany": {
-        "name": "apigusEast1TestAPIany",
-        "type": "API_GATEWAY",
-        "config": {
-          "selectedRegion": "us-east-1",
-          "apiMode": 1,
-          "apiName": "TestAPI",
-          "apiId": "0itznun7w3",
-          "endpointType": "EDGE",
-          "rootResourceId": "h2lelj6j7k",
-          "existingResources": {
-            "/hiru/test": "2b8zt0",
-            "/testPathWithSlash": "2rkw74",
-            "/hiru": "3nc52b",
-            "/hiru/sample": "4226gg",
-            "/hiru/sqstest": "88gr2y",
-            "/MyLambda": "98nqbj",
-            "/": "h2lelj6j7k",
-            "/testWithSlash": "q4m4g1",
-            "/testtwospeciallambda": "q4szm3",
-            "/testtwospecialkumutest": "wey3lk",
-            "/hiru/snscheck": "wok1ku"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/",
-          "resourceName": "",
-          "resourceId": "h2lelj6j7k",
-          "restMethod": "ANY",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "test",
-          "stageDeploymentId": "lkmgvd",
-          "mode": 1
-        }
-      },
-      "sqsk": {
-        "name": "sqsk",
-        "type": "SQS",
-        "config": {
-          "mode": 0,
-          "existing": false,
-          "name": "k",
-          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/k",
-          "selectedRegion": "us-east-1",
-          "deliveryDelay": 0,
-          "deliveryDelayUnit": "seconds",
-          "useRedrivePolicy": false,
-          "useSSE": false,
-          "kmsCustomerMasterKey": "default",
-          "accountId": "318300609668",
-          "dataKeyReusePeriod": 5,
-          "queueType": "standardQueue",
-          "defaultVisibilityTimeout": 30,
-          "defaultVisibilityTimeoutUnit": "seconds",
-          "messageRetentionPeriod": 4,
-          "messageRetentionPeriodUnit": "days",
-          "maximumMessageSize": 256,
-          "receiveMessageWaitTime": 0,
-          "deadLetterQueueName": "",
-          "contentBasedDeduplication": false
-        }
-      }
-    },
+    "currentFileId": "9b9677d4-7f12-4307-8ddb-237cac153d9e",
+    "resources": {},
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -132,22 +55,7 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {
-        "aws-sdk": {
-          "name": "aws-sdk",
-          "language": "javascript",
-          "version": "2.176.0",
-          "dev": true,
-          "notRemovable": false
-        },
-        "slappforge-sdk-aws": {
-          "name": "slappforge-sdk-aws",
-          "language": "javascript",
-          "version": "0.0.5",
-          "dev": false,
-          "notRemovable": false
-        }
-      }
+      "dependencies": {}
     }
   },
   "PROJECT_META": {
@@ -157,13 +65,14 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1562315472104
+    "lastSave": 1564117884692
   },
   "VCS_STATE": {
     "provider": "GitHub",
     "repo": {
       "name": "l",
-      "url": "https://github.com/Kumudikatest/l"
+      "url": "https://github.com/Kumudikatest/l",
+      "branches": []
     }
   }
 }
