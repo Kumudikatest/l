@@ -27,7 +27,7 @@
           "runtime": "nodejs8.10",
           "handler": "handler",
           "timeout": 60,
-          "memory": 128,
+          "memory": 1024,
           "layers": []
         },
         "triggers": []
@@ -65,14 +65,19 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1564117884692
+    "lastSave": 1564117931608
   },
   "VCS_STATE": {
     "provider": "GitHub",
     "repo": {
       "name": "l",
       "url": "https://github.com/Kumudikatest/l",
-      "branches": []
+      "branches": [
+        {
+          "name": "master",
+          "hash": "0f405abe29f3ce3cf2b9c993edfa849ab1ca8c62"
+        }
+      ]
     }
   }
 }
